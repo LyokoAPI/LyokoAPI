@@ -42,6 +42,7 @@
     <Compile Include="VirtualStructures\Interfaces\ISector.cs" />
     <Compile Include="VirtualStructures\Interfaces\ITower.cs" />
     <Compile Include="VirtualStructures\Interfaces\IVirtualWorld.cs" />
+    <Compile Include="VirtualStructures\VirtualWorld.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
