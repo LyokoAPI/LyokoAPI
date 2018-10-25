@@ -43,6 +43,7 @@
     <Compile Include="VirtualStructures\Interfaces\ITower.cs" />
     <Compile Include="VirtualStructures\Interfaces\IVirtualWorld.cs" />
     <Compile Include="VirtualStructures\Sector.cs" />
+    <Compile Include="VirtualStructures\Tower.cs" />
     <Compile Include="VirtualStructures\VirtualWorld.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
