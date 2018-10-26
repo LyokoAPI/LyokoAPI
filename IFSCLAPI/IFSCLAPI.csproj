@@ -39,6 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VirtualStructures\APIActivator.cs" />
     <Compile Include="VirtualStructures\Interfaces\ISector.cs" />
     <Compile Include="VirtualStructures\Interfaces\ITower.cs" />
     <Compile Include="VirtualStructures\Interfaces\IVirtualWorld.cs" />

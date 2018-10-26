@@ -1,3 +1,5 @@
+using IFSCLAPI.VirtualStructures;
+
 namespace IFSCLAPI
 {
     public interface ITower
@@ -5,5 +7,6 @@ namespace IFSCLAPI
         int Number { get; }
         bool Activated { get; }
         ISector Sector { get; }
+        APIActivator Activator { get; set; }
     }
 }
