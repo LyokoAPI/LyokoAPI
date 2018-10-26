@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace IFSCLAPI.VirtualStructures
 {
-    public class VirtualWorld : IVirtualWorld
+    public class APIVirtualWorld : IVirtualWorld
     {
         public string Name { get; }
 
@@ -10,7 +10,7 @@ namespace IFSCLAPI.VirtualStructures
 
         public List<ISector> Sectors { get; }
 
-        public VirtualWorld(string name,params ISector[] sectors )
+        public APIVirtualWorld(string name,params ISector[] sectors )
         {
             Name = name;
             Sectors = new List<ISector>();

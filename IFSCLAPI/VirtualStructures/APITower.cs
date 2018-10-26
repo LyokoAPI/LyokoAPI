@@ -1,12 +1,12 @@
 namespace IFSCLAPI.VirtualStructures
 {
-    public class Tower : ITower
+    public class APITower : ITower
     {
         public int Number { get; }
         public bool Activated { get; }
         public ISector Sector { get; }
 
-        public Tower(int number, ISector sector, bool activated = false)
+        public APITower(int number, ISector sector, bool activated = false)
         {
             Number = number;
             Sector = sector;
