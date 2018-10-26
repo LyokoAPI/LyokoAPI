@@ -7,6 +7,7 @@ namespace IFSCLAPI.API
 {
     public static class LyokoParser
     {
+        #region ActivatorParsers
         public static APIActivator ParseActivator(string activatorstring)
         {
             switch (activatorstring.ToUpper())
@@ -34,5 +35,18 @@ namespace IFSCLAPI.API
                 return false;
             }
         }
+        #endregion 
+
+        public static APIActivator Parse(this APIActivator activator,string activatorstring)
+        {
+            return ParseActivator(activatorstring);
+        }
+
+        public static bool TryParse(this Enum activator, string activatorstring, out APIActivator activatorout)
+        {
+            return TryParseActivator(activatorstring, out activatorout);
+           
+        }
+       
     }
 }
