@@ -1,3 +1,5 @@
+using IFSCLAPI.VirtualStructures.Interfaces;
+
 namespace IFSCLAPI.VirtualStructures
 {
     public class APITower : ITower

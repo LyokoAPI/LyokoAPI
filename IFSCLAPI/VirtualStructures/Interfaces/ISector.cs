@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace IFSCLAPI
+namespace IFSCLAPI.VirtualStructures.Interfaces
 {
     public interface ISector
     {

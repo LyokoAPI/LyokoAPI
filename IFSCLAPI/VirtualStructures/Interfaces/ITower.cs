@@ -1,6 +1,4 @@
-using IFSCLAPI.VirtualStructures;
-
-namespace IFSCLAPI
+namespace IFSCLAPI.VirtualStructures.Interfaces
 {
     public interface ITower
     {
