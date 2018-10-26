@@ -12,5 +12,6 @@ namespace IFSCLAPI.VirtualStructures
             Sector = sector;
             Activated = activated;
         }
-    }
+            }
+    
 }

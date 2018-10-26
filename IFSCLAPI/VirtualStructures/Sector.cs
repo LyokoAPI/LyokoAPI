@@ -15,5 +15,6 @@ namespace IFSCLAPI.VirtualStructures
             Towers.AddRange(towers);
             World = world;
         }
+         
     }
 }
