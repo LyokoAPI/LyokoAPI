@@ -15,6 +15,13 @@ namespace IFSCLAPI.VirtualStructures
             Sector = sector;
             Activated = activated;
         }
-            }
+
+        public APITower(string vworld, string sector, int number, bool activated = false)
+        {
+            Number = number;
+            Activated = activated;
+            Sector = new APISector(vworld,sector,this);
+        }
+    }
     
 }

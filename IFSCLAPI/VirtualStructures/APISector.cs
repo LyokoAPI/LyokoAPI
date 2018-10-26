@@ -9,12 +9,18 @@ namespace IFSCLAPI.VirtualStructures
         public List<ITower> Towers { get; }
         public IVirtualWorld World { get; }
 
-        public APISector(string name, IVirtualWorld world , params ITower[] towers)
+        public APISector(IVirtualWorld world ,string name, params ITower[] towers)
         {
             Name = name;
             Towers = new List<ITower>();
             Towers.AddRange(towers);
             World = world;
+        }
+
+        public APISector(string virtualworldName, string sectorName, params ITower[] towers) 
+            : this(new APIVirtualWorld(virtualworldName), sectorName, towers)
+        {
+            World.Sectors.Add(this);
         }
          
     }
