@@ -12,5 +12,6 @@ Global
 		{EC314DAD-6621-445C-886D-0BEA672C45C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC314DAD-6621-445C-886D-0BEA672C45C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC314DAD-6621-445C-886D-0BEA672C45C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC314DAD-6621-445C-886D-0BEA672C45C2}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 	EndGlobalSection
 EndGlobal

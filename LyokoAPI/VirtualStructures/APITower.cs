@@ -5,7 +5,7 @@ namespace LyokoAPI.VirtualStructures
     public class APITower : ITower
     {
         public int Number { get; }
-        public bool Activated { get; }
+        public bool Activated { get; set; }
         public ISector Sector { get; }
         public APIActivator Activator { get; set; }
 
