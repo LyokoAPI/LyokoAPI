@@ -16,21 +16,23 @@ namespace LyokoAPI.Events
             TowerDeactivationE.Invoke(tower);
         }
 
-        public static void Subscribe(onTowerDeactivation func)
+        public static onTowerDeactivation Subscribe(onTowerDeactivation func)
         {
             TowerDeactivationE += func;
+            return func;
         }
 
         public static void UnSubscribe(onTowerDeactivation func)
         {
-            for (var index = 0; index < TowerDeactivationE.GetInvocationList().Length; index++)
+            /*for (var index = 0; index < TowerDeactivationE.GetInvocationList().Length; index++)
             {
                 var subcription = TowerDeactivationE.GetInvocationList()[index];
                 if (subcription.Equals(func))
                 {
                     TowerDeactivationE -= func;
                 }
-            }
+            }*/
+            TowerDeactivationE -= func;
         }
     }
 }
