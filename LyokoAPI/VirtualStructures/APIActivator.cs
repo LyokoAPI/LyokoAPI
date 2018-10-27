@@ -1,4 +1,4 @@
-namespace IFSCLAPI.VirtualStructures
+namespace LyokoAPI.VirtualStructures
 {
     public enum APIActivator
     {

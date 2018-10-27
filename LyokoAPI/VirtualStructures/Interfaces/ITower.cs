@@ -1,4 +1,4 @@
-namespace IFSCLAPI.VirtualStructures.Interfaces
+namespace LyokoAPI.VirtualStructures.Interfaces
 {
     public interface ITower
     {

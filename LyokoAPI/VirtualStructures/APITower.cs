@@ -1,6 +1,6 @@
-using IFSCLAPI.VirtualStructures.Interfaces;
+using LyokoAPI.VirtualStructures.Interfaces;
 
-namespace IFSCLAPI.VirtualStructures
+namespace LyokoAPI.VirtualStructures
 {
     public class APITower : ITower
     {

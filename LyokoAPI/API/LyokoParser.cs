@@ -1,9 +1,9 @@
 using System;
 using System.Collections;
 using System.ComponentModel;
-using IFSCLAPI.VirtualStructures;
+using LyokoAPI.VirtualStructures;
 
-namespace IFSCLAPI.API
+namespace LyokoAPI.API
 {
     public static class LyokoParser
     {

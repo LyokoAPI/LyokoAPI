@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IFSCLAPI", "IFSCLAPI\IFSCLAPI.csproj", "{EC314DAD-6621-445C-886D-0BEA672C45C2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LyokoAPI", "LyokoAPI\LyokoAPI.csproj", "{EC314DAD-6621-445C-886D-0BEA672C45C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

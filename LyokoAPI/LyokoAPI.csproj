@@ -7,8 +7,8 @@
     <ProjectGuid>{EC314DAD-6621-445C-886D-0BEA672C45C2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IFSCLAPI</RootNamespace>
-    <AssemblyName>IFSCLAPI</AssemblyName>
+    <RootNamespace>LyokoAPI</RootNamespace>
+    <AssemblyName>LyokoAPI</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
