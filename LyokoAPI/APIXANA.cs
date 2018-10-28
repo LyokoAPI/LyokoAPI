@@ -20,7 +20,12 @@ namespace LyokoAPI
         {
             if (!HasTower(tower))
             {
+                if (!IsAttacking)
+                {
+                    XanaAwakenEvent.Call(tower);
+                }
               ActiveTowers.Add(tower);  
+               
             }
         }
 
@@ -29,6 +34,10 @@ namespace LyokoAPI
             if (!HasTower(tower))
             {
                 ActiveTowers.Remove(tower);
+                if (!IsAttacking)
+                {
+                    XanaDefeatEvent.Call();
+                }
             }
         }
         
