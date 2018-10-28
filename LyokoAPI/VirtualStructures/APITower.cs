@@ -5,21 +5,21 @@ namespace LyokoAPI.VirtualStructures
     public class APITower : ITower
     {
         public int Number { get; }
-        public bool Activated { get; set; }
+        
+        public bool Activated => Activator != APIActivator.NONE;
+        
         public ISector Sector { get; }
         public APIActivator Activator { get; set; }
 
-        public APITower(int number, ISector sector, bool activated = false)
+        public APITower(int number, ISector sector)
         {
             Number = number;
             Sector = sector;
-            Activated = activated;
         }
 
-        public APITower(string vworld, string sector, int number, bool activated = false)
+        public APITower(string vworld, string sector, int number)
         {
             Number = number;
-            Activated = activated;
             Sector = new APISector(vworld,sector,this);
         }
 
