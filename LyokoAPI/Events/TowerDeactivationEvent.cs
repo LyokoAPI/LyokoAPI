@@ -10,9 +10,10 @@ namespace LyokoAPI.Events
 
         public static void Call(ITower tower)
         {
-            tower.Activated = false;
-            tower.Activator = APIActivator.NONE;
-            TowerDeactivationE?.Invoke(tower);
+            if (!tower.Activated)
+            {
+                TowerDeactivationE?.Invoke(tower);
+            }
         }
 
         public static Events.OnTowerEvent Subscribe(Events.OnTowerEvent func)

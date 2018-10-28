@@ -11,9 +11,10 @@ namespace LyokoAPI.Events
         
         public static void Call(ITower tower, string activator)
         {
-            tower.Activated = true;
-            tower.Activator = LyokoParser.ParseActivator(activator);
-            TowerActivationE?.Invoke(tower);
+            if (tower.Activated)
+            {
+                TowerActivationE?.Invoke(tower);
+            }
         }
 
         public static Events.OnTowerEvent Subscribe(Events.OnTowerEvent func)

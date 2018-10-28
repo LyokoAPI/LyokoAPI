@@ -9,9 +9,10 @@ namespace LyokoAPI.Events
 
         public static void Call(ITower tower)
         {
-            tower.Activated = true;
-            tower.Activator = APIActivator.XANA;
-            XanaAwakenE?.Invoke(tower);
+            if (tower.Activated && tower.Activator == APIActivator.XANA)
+            {
+                XanaAwakenE?.Invoke(tower);
+            }
         }
 
         public static Events.OnTowerEvent Subscribe(Events.OnTowerEvent func)

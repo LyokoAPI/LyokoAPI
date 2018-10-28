@@ -3,8 +3,8 @@ namespace LyokoAPI.VirtualStructures.Interfaces
     public interface ITower
     {
         int Number { get; }
-        bool Activated { get; set; }
+        bool Activated { get; }
         ISector Sector { get; }
-        APIActivator Activator { get; set; }
+        APIActivator Activator { get; }
     }
 }
