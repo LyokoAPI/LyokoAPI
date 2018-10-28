@@ -6,7 +6,7 @@ namespace LyokoAPI.Events
 
         public static void Call()
         {
-            XanaDefeatE();
+            XanaDefeatE?.Invoke();
         }
 
         public static Events.OnLyokoEvent Subscribe(Events.OnLyokoEvent func)

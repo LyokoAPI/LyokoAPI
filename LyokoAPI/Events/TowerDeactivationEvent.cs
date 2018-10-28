@@ -12,7 +12,7 @@ namespace LyokoAPI.Events
         {
             tower.Activated = false;
             tower.Activator = APIActivator.NONE;
-            TowerDeactivationE.Invoke(tower);
+            TowerDeactivationE?.Invoke(tower);
         }
 
         public static Events.OnTowerEvent Subscribe(Events.OnTowerEvent func)
