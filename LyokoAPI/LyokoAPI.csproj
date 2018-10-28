@@ -43,6 +43,7 @@
     <Compile Include="Events\TowerActivationEvent.cs" />
     <Compile Include="Events\TowerDeactivationEvent.cs" />
     <Compile Include="Events\Events.cs" />
+    <Compile Include="Events\TowerHijackEvent.cs" />
     <Compile Include="Events\XanaAwakenEvent.cs" />
     <Compile Include="Events\XanaDefeatEvent.cs" />
     <Compile Include="LyokoAPI.cs" />

@@ -19,6 +19,7 @@ namespace LyokoAPI
             {
                 TowerActivationEvent.Subscribe(OnTowerActivation);
                 TowerDeactivationEvent.Subscribe(onTowerDeactivation);
+                TowerHijackEvent.Subscribe(onTowerHijack);
                 _initizalized = true;
             }
         }
@@ -54,6 +55,12 @@ namespace LyokoAPI
                 }
             }
         }
+
+        private static void onTowerHijack(ITower tower, APIActivator old, APIActivator newact)
+        {
+            onTowerDeactivation(tower);
+            OnTowerActivation(tower);
+        }
         
         private static bool HasTower(ITower tower)
         {
@@ -68,5 +75,6 @@ namespace LyokoAPI
 
             return contains;
         }
+        
     }
 }
