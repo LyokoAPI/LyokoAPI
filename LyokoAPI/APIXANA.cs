@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using LyokoAPI.Events;
+using LyokoAPI.VirtualStructures;
 using LyokoAPI.VirtualStructures.Interfaces;
 
 namespace LyokoAPI
@@ -27,21 +29,28 @@ namespace LyokoAPI
             {
                 if (!IsAttacking)
                 {
-                    XanaAwakenEvent.Call(tower);
+                    if (tower.Activator == APIActivator.XANA)
+                    {
+                        ActiveTowers.Add(tower);
+                        XanaAwakenEvent.Call(tower);
+                        
+                    }
                 }
-              ActiveTowers.Add(tower);  
                
             }
         }
 
         private static void onTowerDeactivation(ITower tower)
         {
-            if (!HasTower(tower))
+            if (HasTower(tower))
             {
-                ActiveTowers.Remove(tower);
-                if (!IsAttacking)
+                if (IsAttacking)
                 {
-                    XanaDefeatEvent.Call();
+                    ActiveTowers.Remove(tower);
+                    if (!IsAttacking)
+                    {
+                        XanaDefeatEvent.Call();
+                    }
                 }
             }
         }

@@ -25,7 +25,7 @@ namespace LyokoAPI.VirtualStructures
 
         public override bool Equals(object obj)
         {
-            if (obj.GetType() == typeof(APITower))
+            if (obj is ITower)
             {
                 ITower otherTower = (APITower)obj;
                 return otherTower.Sector.World.Name.Equals(Sector.World.Name) && otherTower.Sector.Name.Equals(Sector.Name) && otherTower.Number.Equals(Number);

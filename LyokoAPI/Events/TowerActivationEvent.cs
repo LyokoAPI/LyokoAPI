@@ -18,7 +18,7 @@ namespace LyokoAPI.Events
 
         public static Events.OnTowerEvent Subscribe(Events.OnTowerEvent func)
         {
-           TowerActivationE += func;
+            TowerActivationE += func;
             return func;
         }
 
