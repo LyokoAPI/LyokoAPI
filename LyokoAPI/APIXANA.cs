@@ -7,13 +7,18 @@ namespace LyokoAPI
 {
     public static class APIXANA
     {
+        private static bool _initizalized = false;
         public static List<ITower> ActiveTowers { get; } = new List<ITower>();
         public static bool IsAttacking => ActiveTowers.Count > 0;
 
-        static APIXANA()
+        internal static void Initialize()
         {
-            TowerActivationEvent.Subscribe(OnTowerActivation);
-            TowerDeactivationEvent.Subscribe(onTowerDeactivation);
+            if (!_initizalized)
+            {
+                TowerActivationEvent.Subscribe(OnTowerActivation);
+                TowerDeactivationEvent.Subscribe(onTowerDeactivation);
+                _initizalized = true;
+            }
         }
 
         private static void OnTowerActivation(ITower tower)
