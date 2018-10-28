@@ -5,9 +5,8 @@ namespace LyokoAPI.Events
 {
     public class TowerDeactivationEvent
     {
-        public delegate void onTowerDeactivation(ITower tower);
 
-        private static event onTowerDeactivation TowerDeactivationE;
+        private static event Events.onTowerEvent TowerDeactivationE;
 
         public static void Call(ITower tower)
         {
@@ -16,13 +15,13 @@ namespace LyokoAPI.Events
             TowerDeactivationE.Invoke(tower);
         }
 
-        public static onTowerDeactivation Subscribe(onTowerDeactivation func)
+        public static Events.onTowerEvent Subscribe(Events.onTowerEvent func)
         {
             TowerDeactivationE += func;
             return func;
         }
 
-        public static void UnSubscribe(onTowerDeactivation func)
+        public static void UnSubscribe(Events.onTowerEvent func)
         {
             /*for (var index = 0; index < TowerDeactivationE.GetInvocationList().Length; index++)
             {

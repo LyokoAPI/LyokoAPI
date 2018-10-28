@@ -7,7 +7,6 @@ namespace LyokoAPI
 {
     public static class APIXANA
     {
-
         public static List<ITower> ActiveTowers { get; } = new List<ITower>();
         public static bool IsAttacking => ActiveTowers.Count > 0;
 
