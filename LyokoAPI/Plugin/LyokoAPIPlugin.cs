@@ -2,13 +2,12 @@ namespace LyokoAPI.Plugin
 {
     public interface LyokoAPIPlugin
     {
+        string Name { get; }
+        string Author { get; }
+        bool Enabled { get; }
+        
         bool OnEnable();
         bool OnDisable();
-        
-        string GetName();
-        string GetAuthor();
-
-        bool IsEnabled();
 
         void OnGameStart(bool storyMode);
         void OnGameEnd(bool failed);
