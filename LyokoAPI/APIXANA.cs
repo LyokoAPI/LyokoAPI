@@ -7,13 +7,13 @@ using LyokoAPI.VirtualStructures.Interfaces;
 
 namespace LyokoAPI
 {
-    public static class APIXANA
+    public class APIXANA
     {
-        private static bool _initizalized = false;
-        public static List<ITower> ActiveTowers { get; } = new List<ITower>();
-        public static bool IsAttacking => ActiveTowers.Count > 0;
+        private bool _initizalized = false;
+        public List<ITower> ActiveTowers { get; } = new List<ITower>();
+        public bool IsAttacking => ActiveTowers.Count > 0;
 
-        internal static void Initialize()
+        public APIXANA()
         {
             if (!_initizalized)
             {
@@ -24,7 +24,7 @@ namespace LyokoAPI
             }
         }
 
-        private static void OnTowerActivation(ITower tower)
+        private void OnTowerActivation(ITower tower)
         {
             if (!HasTower(tower))
             {
@@ -41,7 +41,7 @@ namespace LyokoAPI
             }
         }
 
-        private static void onTowerDeactivation(ITower tower)
+        private void onTowerDeactivation(ITower tower)
         {
             if (HasTower(tower))
             {
@@ -56,13 +56,13 @@ namespace LyokoAPI
             }
         }
 
-        private static void onTowerHijack(ITower tower, APIActivator old, APIActivator newact)
+        private void onTowerHijack(ITower tower, APIActivator old, APIActivator newact)
         {
             onTowerDeactivation(tower);
             OnTowerActivation(tower);
         }
         
-        private static bool HasTower(ITower tower)
+        private bool HasTower(ITower tower)
         {
             bool contains = false;
             foreach (var listtower in ActiveTowers)
