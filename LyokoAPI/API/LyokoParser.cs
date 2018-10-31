@@ -31,6 +31,7 @@ namespace LyokoAPI.API
             }
             catch (NullReferenceException e)
             {
+                Console.WriteLine(e);
                 activator = APIActivator.NONE;
                 return false;
             }
