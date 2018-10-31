@@ -1,6 +1,0 @@
-C:\Users\TenDRILLL\Documents\GitHub\LyokoAPI\LyokoAPI\bin\Debug\LyokoAPI.dll
-C:\Users\TenDRILLL\Documents\GitHub\LyokoAPI\LyokoAPI\bin\Debug\LyokoAPI.pdb
-C:\Users\TenDRILLL\Documents\GitHub\LyokoAPI\LyokoAPI\obj\Debug\LyokoAPI.csprojAssemblyReference.cache
-C:\Users\TenDRILLL\Documents\GitHub\LyokoAPI\LyokoAPI\obj\Debug\LyokoAPI.csproj.CoreCompileInputs.cache
-C:\Users\TenDRILLL\Documents\GitHub\LyokoAPI\LyokoAPI\obj\Debug\LyokoAPI.dll
-C:\Users\TenDRILLL\Documents\GitHub\LyokoAPI\LyokoAPI\obj\Debug\LyokoAPI.pdb
