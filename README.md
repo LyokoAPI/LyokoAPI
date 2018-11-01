@@ -21,6 +21,11 @@ You can find the needed delegates in the sections below
 A delegate can also be a lamda, like so:
 
     TowerEvent.Subscribe( tower => Console.WriteLine(tower.Number);
+  But it can also be a method that fits the delegate like this : 
+  
+
+    enter code here
+
 If you want to remove the listener, you can do
 
     var listener = SpecificListener.Subscribe( //delegate );
@@ -75,5 +80,5 @@ Properties:
 #### APIVirtualWorld : IVirtualWorld
 	
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2OTE4NDEzMzRdfQ==
+eyJoaXN0b3J5IjpbMTM4MDczMjQzMywtMTY5MTg0MTMzNF19
 -->
