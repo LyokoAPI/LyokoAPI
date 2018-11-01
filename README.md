@@ -24,7 +24,6 @@ A delegate can also be a lamda, like so:
   But it can also be a method that fits the delegate like this : 
   
 
-    enter code here
 
 If you want to remove the listener, you can do
 
@@ -80,5 +79,5 @@ Properties:
 #### APIVirtualWorld : IVirtualWorld
 	
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM4MDczMjQzMywtMTY5MTg0MTMzNF19
+eyJoaXN0b3J5IjpbLTMyMDg3NjE2LC0xNjkxODQxMzM0XX0=
 -->
