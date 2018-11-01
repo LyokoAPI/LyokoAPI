@@ -24,6 +24,9 @@ A delegate can also be a lamda, like so:
   But it can also be a method that fits the delegate like this : 
   
 
+    public void OnTowerEvent(ITower tower){ //do stuff}
+    TowerEvent.Subscribe(OnTowerEvent);
+
 
 If you want to remove the listener, you can do
 
@@ -75,9 +78,18 @@ Properties:
 #### ITower
 Properties:
 	int Number, bool Activated, ISector Sector, APIActivator Activator
-
+#### LyokoAPIPlugin
+This is a feature added mainly for use with applications that use LyokoPluginLoader
+Properties:
+string Name, string Author
+bool Enabled (wether or not the plugin is active)
+void OnEnable() (what should happen if the plugin is enabled, dont forget to set Enabled to true)
+void onDisable() (dont forget to set Enabled to false)
+void onGameStart() If the application has a concept of game sessions, like IFSCL, what should happen if a game is started)
 #### APIVirtualWorld : IVirtualWorld
+
 	
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMyMDg3NjE2LC0xNjkxODQxMzM0XX0=
+eyJoaXN0b3J5IjpbLTEwMzIyNzUyMDEsLTE2OTE4NDEzMzRdfQ
+==
 -->
