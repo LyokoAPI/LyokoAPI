@@ -40,6 +40,7 @@
   <ItemGroup>
     <Compile Include="APISuperScan.cs" />
     <Compile Include="API\LyokoParser.cs" />
+    <Compile Include="Events\Logger.cs" />
     <Compile Include="Events\TowerActivationEvent.cs" />
     <Compile Include="Events\TowerDeactivationEvent.cs" />
     <Compile Include="Events\Events.cs" />
