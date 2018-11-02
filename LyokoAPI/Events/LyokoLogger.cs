@@ -1,6 +1,6 @@
 namespace LyokoAPI.Events
 {
-    public class Logger
+    public static class LyokoLogger
     {
         private static event Events.OnLogEvent LogE;
 

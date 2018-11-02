@@ -20,18 +20,18 @@ namespace LyokoAPI.Plugin
                 bool succeeded = OnEnable();
                 if (!succeeded)
                 {
-                    Logger.Log("LyokoAPIPlugin",$"{ToString()} Didn't enable sucessfully, attempting to disable");
+                    LyokoLogger.Log("LyokoAPIPlugin",$"{ToString()} Didn't enable sucessfully, attempting to disable");
                     Disable();
                 }
                 else
                 {
-                    Logger.Log("LyokoAPIPlugin",$"{ToString()} Was enabled sucessfully");
+                    LyokoLogger.Log("LyokoAPIPlugin",$"{ToString()} Was enabled sucessfully");
                     Enabled = true;
                 }
             }
             catch (Exception e)
             {
-                Logger.Log("LyokoAPIPlugin",$"{ToString()} threw an exception while enabling: {e.StackTrace}");
+                LyokoLogger.Log("LyokoAPIPlugin",$"{ToString()} threw an exception while enabling: {e.StackTrace}");
                 Disable();
             }
 
@@ -44,18 +44,18 @@ namespace LyokoAPI.Plugin
                 bool succeeded = OnDisable();
                 if (!succeeded)
                 {
-                    Logger.Log("LyokoAPIPlugin",$"{ToString()} Didn't disable sucessfully");
+                    LyokoLogger.Log("LyokoAPIPlugin",$"{ToString()} Didn't disable sucessfully");
                     Enabled = true;
                 }
                 else
                 {
-                    Logger.Log("LyokoAPIPlugin",$"{ToString()} Was disabled sucessfully");
+                    LyokoLogger.Log("LyokoAPIPlugin",$"{ToString()} Was disabled sucessfully");
                     Enabled = false;
                 }
             }
             catch (Exception e)
             {
-                Logger.Log("LyokoAPIPlugin",$"{ToString()} threw an exception while disabling: {e.StackTrace}");
+                LyokoLogger.Log("LyokoAPIPlugin",$"{ToString()} threw an exception while disabling: {e.StackTrace}");
             }
             
 
