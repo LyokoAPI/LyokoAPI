@@ -17,8 +17,8 @@ namespace LyokoAPI.Plugin
             bool succeeded = OnEnable();
             if (!succeeded)
             {
-                Logger.Log("LyokoAPIPlugin",$"{ToString()} Didn't enable sucessfully");
-                Enabled = false;
+                Logger.Log("LyokoAPIPlugin",$"{ToString()} Didn't enable sucessfully, attempting to disable");
+                Disable();
             }
             else
             {
