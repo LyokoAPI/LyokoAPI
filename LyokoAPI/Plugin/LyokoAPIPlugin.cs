@@ -22,6 +22,7 @@ namespace LyokoAPI.Plugin
             }
             else
             {
+                Logger.Log("LyokoAPIPlugin",$"{ToString()} Was enabled sucessfully");
                 Enabled = true;
             }
 
@@ -37,6 +38,7 @@ namespace LyokoAPI.Plugin
             }
             else
             {
+                Logger.Log("LyokoAPIPlugin",$"{ToString()} Was disabled sucessfully");
                 Enabled = false;
             }
 
