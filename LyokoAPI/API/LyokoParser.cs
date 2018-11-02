@@ -17,8 +17,7 @@ namespace LyokoAPI.API
                     case "HOPPER" : return APIActivator.HOPPER;
                     case "NONE": return APIActivator.NONE;
             }
-
-            throw new NullReferenceException("Invalid activator: "+ activatorstring);
+            throw new FormatException("Invalid activator: "+ activatorstring);
             
         }
 
@@ -29,9 +28,8 @@ namespace LyokoAPI.API
                 activator = ParseActivator(activatorstring);
                 return true;
             }
-            catch (NullReferenceException e)
+            catch (FormatException)
             {
-                Console.WriteLine(e);
                 activator = APIActivator.NONE;
                 return false;
             }
