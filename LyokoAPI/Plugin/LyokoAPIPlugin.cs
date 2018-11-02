@@ -1,3 +1,4 @@
+using System;
 using LyokoAPI.Events;
 
 namespace LyokoAPI.Plugin
@@ -14,33 +15,49 @@ namespace LyokoAPI.Plugin
 
         public bool Enable()
         {
-            bool succeeded = OnEnable();
-            if (!succeeded)
+            try
             {
-                Logger.Log("LyokoAPIPlugin",$"{ToString()} Didn't enable sucessfully, attempting to disable");
-                Disable();
+                bool succeeded = OnEnable();
+                if (!succeeded)
+                {
+                    Logger.Log("LyokoAPIPlugin",$"{ToString()} Didn't enable sucessfully, attempting to disable");
+                    Disable();
+                }
+                else
+                {
+                    Logger.Log("LyokoAPIPlugin",$"{ToString()} Was enabled sucessfully");
+                    Enabled = true;
+                }
             }
-            else
+            catch (Exception e)
             {
-                Logger.Log("LyokoAPIPlugin",$"{ToString()} Was enabled sucessfully");
-                Enabled = true;
+                Logger.Log("LyokoAPIPlugin",$"{ToString()} threw an exception while enabling: {e.StackTrace}");
+                Disable();
             }
 
             return Enabled;
         }
         public bool Disable()
         {
-            bool succeeded = OnDisable();
-            if (!succeeded)
+            try
             {
-                Logger.Log("LyokoAPIPlugin",$"{ToString()} Didn't disable sucessfully");
-                Enabled = true;
+                bool succeeded = OnDisable();
+                if (!succeeded)
+                {
+                    Logger.Log("LyokoAPIPlugin",$"{ToString()} Didn't disable sucessfully");
+                    Enabled = true;
+                }
+                else
+                {
+                    Logger.Log("LyokoAPIPlugin",$"{ToString()} Was disabled sucessfully");
+                    Enabled = false;
+                }
             }
-            else
+            catch (Exception e)
             {
-                Logger.Log("LyokoAPIPlugin",$"{ToString()} Was disabled sucessfully");
-                Enabled = false;
+                Logger.Log("LyokoAPIPlugin",$"{ToString()} threw an exception while disabling: {e.StackTrace}");
             }
+            
 
             return Enabled;
         }
