@@ -20,7 +20,6 @@ namespace LyokoAPI
              TowerActivationEvent.Subscribe(OnTowerActivation);
              TowerDeactivationEvent.Subscribe(OnTowerDeactivation);
              TowerHijackEvent.Subscribe(OnTowerHijack);
-             
         }
 
         private void OnTowerActivation(ITower tower)

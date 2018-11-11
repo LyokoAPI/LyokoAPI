@@ -9,7 +9,7 @@ namespace LyokoAPI.Events
     {
 
         private static event Events.OnTowerEvent TowerActivationE;
-        
+
         public static void Call(ITower tower)
         {
             if (tower.Activated)
