@@ -10,7 +10,7 @@ namespace LyokoAPI.Events
         
         public static void Call()
         {
-            if (IsLocked && !Assembly.GetCallingAssembly().Equals(Events.Master))
+            if (Events.AllLocked || (IsLocked && !Assembly.GetCallingAssembly().Equals(Events.Master)))
             {
                 return;
             }

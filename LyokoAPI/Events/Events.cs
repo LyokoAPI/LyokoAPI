@@ -10,6 +10,7 @@ namespace LyokoAPI.Events
         public static Assembly Master { get; private set; }
         public static bool hasMaster => Master != null;
         public static bool LockingDisabled { get; private set; }
+        public static bool AllLocked { get; private set; }
         public static bool SetMaster()
         {
             if (!hasMaster)
@@ -19,6 +20,7 @@ namespace LyokoAPI.Events
 
             return hasMaster;
         }
+        
 
         public static bool DisableLocking()
         {
@@ -28,6 +30,26 @@ namespace LyokoAPI.Events
             }
 
             return LockingDisabled;
+        }
+
+        public static bool LockAll()
+        {
+            if ( hasMaster && Assembly.GetCallingAssembly().Equals(Master))
+            {
+                AllLocked = true;
+            }
+
+            return AllLocked;
+        }
+
+        public static bool UnlockAll()
+        {
+            if ( hasMaster && Assembly.GetCallingAssembly().Equals(Master))
+            {
+                AllLocked = false;
+            }
+
+            return !AllLocked;
         }
         public delegate void OnTowerEvent(ITower tower);
 

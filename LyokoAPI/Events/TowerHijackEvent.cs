@@ -11,7 +11,7 @@ namespace LyokoAPI.Events
 
         public static void Call(ITower tower, APIActivator old, APIActivator newactivator)
         {
-            if (IsLocked && !Assembly.GetCallingAssembly().Equals(Events.Master))
+            if (Events.AllLocked || (IsLocked && !Assembly.GetCallingAssembly().Equals(Events.Master)))
             {
                 return;
             }

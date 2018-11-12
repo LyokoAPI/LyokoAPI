@@ -14,7 +14,7 @@ namespace LyokoAPI.Events
 
         public static void Call(ITower tower)
         {
-            if (IsLocked && !Assembly.GetCallingAssembly().Equals(Events.Master))
+            if (Events.AllLocked || (IsLocked && !Assembly.GetCallingAssembly().Equals(Events.Master)))
             {
                 return;
             }
@@ -26,7 +26,7 @@ namespace LyokoAPI.Events
 
         public static void Call(APITower tower, APIActivator activator)
         {
-            if (IsLocked && !Assembly.GetCallingAssembly().Equals(Events.Master))
+            if (Events.AllLocked || (IsLocked && !Assembly.GetCallingAssembly().Equals(Events.Master)))
             {
                 return;
             }
@@ -36,7 +36,7 @@ namespace LyokoAPI.Events
 
         public static void Call(string vworld, string sector, int number, string activator)
         {
-            if (IsLocked && !Assembly.GetCallingAssembly().Equals(Events.Master))
+            if (Events.AllLocked || (IsLocked && !Assembly.GetCallingAssembly().Equals(Events.Master)))
             {
                 return;
             }
