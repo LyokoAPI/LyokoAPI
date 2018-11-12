@@ -8,7 +8,7 @@ namespace LyokoAPI.Events
         
         public static void Call()
         {
-            if (Events.AllLocked || (IsLocked && !Assembly.GetCallingAssembly().Equals(Events.Master)))
+            if (IsLocked && !Assembly.GetCallingAssembly().Equals(Events.Master))
             {
                 return;
             }
@@ -27,29 +27,33 @@ namespace LyokoAPI.Events
         }
         
         #region locking
-        public static bool IsLocked { get; internal set; }
+        private static bool _isLocked;
+        public static bool IsLocked
+        {
+            get => _isLocked || Events.AllLocked;
+            internal set => _isLocked = value;
+        }
         /*
          * Returns true if the lock was successful. 
          */
         public static bool Lock()
         {
-            if (Assembly.GetCallingAssembly().Equals(Events.Master) && !Events.LockingDisabled)
+            if (Events.hasMaster && !Assembly.GetCallingAssembly().Equals(Events.Master))
             {
-                IsLocked = true;
+                return false;
             }
-
-            return IsLocked;
+            return IsLocked = true;
         }
         /*
          * Returns true if the unlock was successful
          */
         public static bool UnLock()
         {
-            if (IsLocked && Assembly.GetCallingAssembly().Equals(Events.Master))
+            if (Events.hasMaster && !Assembly.GetCallingAssembly().Equals(Events.Master))
             {
-                IsLocked = false;
+                return false;
             }
-
+            IsLocked = false;
             return !IsLocked;
         }
         #endregion

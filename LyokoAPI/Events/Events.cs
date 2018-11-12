@@ -9,7 +9,6 @@ namespace LyokoAPI.Events
     {
         public static Assembly Master { get; private set; }
         public static bool hasMaster => Master != null;
-        public static bool LockingDisabled { get; private set; }
         public static bool AllLocked { get; private set; }
         public static bool SetMaster()
         {
@@ -19,17 +18,6 @@ namespace LyokoAPI.Events
             }
 
             return hasMaster;
-        }
-        
-
-        public static bool DisableLocking()
-        {
-            if ( hasMaster && Assembly.GetCallingAssembly().Equals(Master))
-            {
-                LockingDisabled = true;
-            }
-
-            return LockingDisabled;
         }
 
         public static bool LockAll()
