@@ -12,16 +12,39 @@ namespace LyokoAPI
         public List<ITower> XanaTowers { get; } = new List<ITower>();
         public List<ITower> HopperTowers { get; } = new List<ITower>();
         public List<ITower> JeremieTowers { get; } = new List<ITower>();
-        public bool XanaIsAttacking => XanaTowers.Count > 0;
+        public bool XanaIsAttacking;
+        private static APISuperScan _superScan;
 
-        public APISuperScan()
+        public static APISuperScan GetOrCreate()
+        {
+            if (_superScan == null)
+            {
+                _superScan = new APISuperScan();
+            }
+
+            return _superScan;
+        }
+        
+        private APISuperScan()
         {
             
              TowerActivationEvent.Subscribe(OnTowerActivation);
              TowerDeactivationEvent.Subscribe(OnTowerDeactivation);
              TowerHijackEvent.Subscribe(OnTowerHijack);
         }
+        
+        
 
+        private void onXanaAwaken()
+        {
+            XanaIsAttacking = true;
+        }
+
+        private void onXanaDefeat()
+        {
+            XanaIsAttacking = false;
+        }
+        
         private void OnTowerActivation(ITower tower)
         {
             if (HasTower(tower)) return;
@@ -29,10 +52,6 @@ namespace LyokoAPI
             {
                 case APIActivator.XANA:
                     XanaTowers.Add(tower);
-                    if (!XanaIsAttacking)
-                    {
-                        XanaAwakenEvent.Call();
-                    }
                     break;
                 case APIActivator.HOPPER:
                     HopperTowers.Add(tower);
@@ -49,14 +68,7 @@ namespace LyokoAPI
             switch (tower.Activator)
             {
                 case APIActivator.XANA:
-                    if (XanaIsAttacking)
-                    {
-                        XanaTowers.Remove(tower);
-                        if (!XanaIsAttacking)
-                        {
-                            XanaDefeatEvent.Call();
-                        }
-                    }
+                    XanaTowers.Remove(tower);
                     break;
                 case APIActivator.HOPPER:
                     HopperTowers.Remove(tower);
