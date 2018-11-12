@@ -42,7 +42,9 @@ namespace LyokoAPI.Events
             {
                 return false;
             }
-            return IsLocked = true;
+
+            IsLocked = true;
+            return IsLocked;
         }
         /*
          * Returns true if the unlock was successful
