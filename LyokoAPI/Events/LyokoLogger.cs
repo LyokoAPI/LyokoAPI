@@ -1,9 +1,11 @@
+using System.Reflection;
+
 namespace LyokoAPI.Events
 {
     public static class LyokoLogger
     {
         private static event Events.OnLogEvent LogE;
-
+        
         public static void Log(string sender, string message)
         {
             LogE?.Invoke($"[{sender}] {message}");
@@ -19,5 +21,6 @@ namespace LyokoAPI.Events
         {
             LogE -= func;
         }
+        
     }
 }
