@@ -31,7 +31,7 @@ namespace LyokoAPI
                     XanaTowers.Add(tower);
                     if (!XanaIsAttacking)
                     {
-                        XanaAwakenEvent.Call(tower);
+                        XanaAwakenEvent.Call();
                     }
                     break;
                 case APIActivator.HOPPER:
