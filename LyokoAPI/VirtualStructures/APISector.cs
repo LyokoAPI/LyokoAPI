@@ -30,7 +30,7 @@ namespace LyokoAPI.VirtualStructures
             Towers = new List<ITower>();
             for (int i = 1; i <= towers; i++)
             {
-                Towers.Add(new APITower(i,this));
+                Towers.Add(new APITower(this, i));
             }
 
             World = virtualworld;

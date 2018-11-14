@@ -11,7 +11,7 @@ namespace LyokoAPI.VirtualStructures
         public ISector Sector { get; }
         public APIActivator Activator { get; set; }
 
-        public APITower(int number, ISector sector)
+        public APITower(ISector sector, int number)
         {
             Number = number;
             Sector = sector;
