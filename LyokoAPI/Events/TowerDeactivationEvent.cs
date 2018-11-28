@@ -21,6 +21,10 @@ namespace LyokoAPI.Events
             }
         }
 
+        public static void Call(string vworld, string sector, int number)
+        {
+           Call(new APITower(vworld,sector,number)); 
+        }
         public static Events.OnTowerEvent Subscribe(Events.OnTowerEvent func)
         {
             TowerDeactivationE += func;
