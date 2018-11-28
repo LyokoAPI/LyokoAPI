@@ -12,10 +12,10 @@ namespace LyokoAPI.Events
         public static bool AllLocked { get; private set; }
         public static bool SetMaster()
         {
-            if (!hasMaster)
+            /*if (!hasMaster)
             {
                 Master = Assembly.GetCallingAssembly();
-            }
+            }*/
 
             return hasMaster;
         }
@@ -26,7 +26,7 @@ namespace LyokoAPI.Events
             {
                 AllLocked = true;
             }
-
+ 
             return AllLocked;
         }
 
