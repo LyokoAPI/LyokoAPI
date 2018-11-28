@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using System.Runtime.Remoting.Activation;
 using LyokoAPI.VirtualStructures;
@@ -10,6 +11,7 @@ namespace LyokoAPI.Events
         public static Assembly Master { get; private set; }
         public static bool hasMaster => Master != null;
         public static bool AllLocked { get; private set; }
+        [Obsolete("This won't actually do anything, though it might be re-enabled in the future")]
         public static bool SetMaster()
         {
             /*if (!hasMaster)
