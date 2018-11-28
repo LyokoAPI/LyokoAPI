@@ -16,6 +16,8 @@ namespace LyokoAPI.API
                     case "JEREMIE": return APIActivator.JEREMIE;
                     case "HOPPER" : return APIActivator.HOPPER;
                     case "NONE": return APIActivator.NONE;
+                    case "NEUTRE": return APIActivator.NONE;
+                    case "NEUTRAL": return APIActivator.NONE;
             }
             throw new FormatException("Invalid activator: "+ activatorstring);
             
