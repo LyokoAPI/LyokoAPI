@@ -51,7 +51,7 @@ namespace LyokoAPI.Events
             return func;
         }
 
-        public static void UnSubscribe(Events.OnTowerEvent func)
+        public static void Unsubscribe(Events.OnTowerEvent func)
         {
            TowerActivationE -= func;
         }

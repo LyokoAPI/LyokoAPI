@@ -31,7 +31,7 @@ namespace LyokoAPI.Events
             return func;
         }
 
-        public static void UnSubscribe(Events.OnTowerEvent func)
+        public static void Unsubscribe(Events.OnTowerEvent func)
         {
             /*for (var index = 0; index < TowerDeactivationE.GetInvocationList().Length; index++)
             {
