@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using LyokoAPI.VirtualStructures;
 using LyokoAPI.VirtualStructures.Interfaces;
@@ -42,6 +43,11 @@ namespace LyokoAPI.Events
                 }
             }*/
             TowerDeactivationE -= func;
+        }
+        [Obsolete("Use Unsubscribe(...) instead")]
+        public static void UnSubscribe(Events.OnTowerEvent func)
+        {
+            Unsubscribe(func);
         }
                 
         #region locking

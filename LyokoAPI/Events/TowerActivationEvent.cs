@@ -56,6 +56,12 @@ namespace LyokoAPI.Events
            TowerActivationE -= func;
         }
         
+        [Obsolete("Use Unsubscribe(...) instead")]
+        public static void UnSubscribe(Events.OnTowerEvent func)
+        {
+            Unsubscribe(func);
+        }
+        
         #region locking
         private static bool _isLocked;
         public static bool IsLocked
