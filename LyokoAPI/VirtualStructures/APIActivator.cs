@@ -1,8 +1,11 @@
 namespace LyokoAPI.VirtualStructures
 {
-    public enum APIActivator
+    public enum APIActivator : byte
     {
-        XANA,JEREMIE,HOPPER,NONE
+        NONE = 0,
+        XANA = 1,
+        JEREMIE,
+        HOPPER
     }
     
 }
