@@ -1,3 +1,4 @@
+using System.Data.Odbc;
 using System.Reflection;
 using LyokoAPI.VirtualStructures;
 using LyokoAPI.VirtualStructures.Interfaces;
@@ -15,9 +16,20 @@ namespace LyokoAPI.Events
             {
                 return;
             }
-            TowerHijackE?.Invoke(tower,old,newactivator);
-        }
 
+            if (old.Equals(APIActivator.NONE))
+            {
+                TowerActivationEvent.Call(new APITower(tower.Sector.World.Name,tower.Sector.Name,tower.Number),newactivator);
+            } else if (newactivator.Equals(APIActivator.NONE))
+            {
+                TowerDeactivationEvent.Call(new APITower(tower.Sector.World.Name,tower.Sector.Name,tower.Number));
+            }
+            else
+            {
+                TowerHijackE?.Invoke(tower,old,newactivator);
+            }
+        }
+        
         public static Events.OnActivatorSwitch Subscribe(Events.OnActivatorSwitch func)
         {
             TowerHijackE += func;
