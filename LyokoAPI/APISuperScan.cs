@@ -44,13 +44,21 @@ namespace LyokoAPI
         {
             XanaIsAttacking = false;
         }
-        
+
         private void OnTowerActivation(ITower tower)
         {
+            OnTowerActivation(tower, tower.Activator);
+        }
+        
+        private void OnTowerActivation(ITower tower, APIActivator activator)
+        {
             if (HasTower(tower)) return;
-            switch (tower.Activator)
+            switch (activator)
             {
                 case APIActivator.XANA:
+                    if (XanaTowers.Count == 0) {
+                        onXanaAwaken();
+                    }
                     XanaTowers.Add(tower);
                     break;
                 case APIActivator.HOPPER:
@@ -61,14 +69,22 @@ namespace LyokoAPI
                     break;
             }
         }
-
+        
         private void OnTowerDeactivation(ITower tower)
         {
+            OnTowerDeactivation(tower, tower.Activator);
+        }
+
+        private void OnTowerDeactivation(ITower tower, APIActivator activator)
+        {
             if (!HasTower(tower)) return;
-            switch (tower.Activator)
+            switch (activator)
             {
                 case APIActivator.XANA:
                     XanaTowers.Remove(tower);
+                    if (XanaTowers.Count == 0) {
+                        onXanaDefeat();
+                    }
                     break;
                 case APIActivator.HOPPER:
                     HopperTowers.Remove(tower);
@@ -80,10 +96,10 @@ namespace LyokoAPI
             
         }
 
-        private void OnTowerHijack(ITower tower, APIActivator old, APIActivator newact)
+        private void OnTowerHijack(ITower tower, APIActivator oldActivator, APIActivator newActivator)
         {
-            OnTowerDeactivation(tower);
-            OnTowerActivation(tower);
+            OnTowerDeactivation(tower, oldActivator);
+            OnTowerActivation(tower, newActivator);
         }
         
         private bool HasTower(ITower tower)
