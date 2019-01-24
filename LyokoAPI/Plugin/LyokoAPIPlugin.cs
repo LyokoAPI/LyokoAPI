@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using LyokoAPI.Events;
 
 namespace LyokoAPI.Plugin
@@ -8,7 +9,7 @@ namespace LyokoAPI.Plugin
         public abstract string Name { get; }
         public abstract string Author { get; }
         public bool Enabled { get; private set; }
-
+        public ICollection<PluginDependency> Dependencies { get; protected set; } = new List<PluginDependency>();
     
         protected abstract bool OnEnable();
         protected abstract bool OnDisable();
