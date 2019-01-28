@@ -39,6 +39,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APISuperScan.cs" />
+    <Compile Include="API\Compatibility\CompatiblityLevel.cs" />
+    <Compile Include="API\Compatibility\Version.cs" />
     <Compile Include="API\Info.cs" />
     <Compile Include="API\LyokoParser.cs" />
     <Compile Include="Events\CommandInputEvent.cs" />
