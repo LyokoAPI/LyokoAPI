@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Reflection;
 using LyokoAPI.Events;
 
 namespace LyokoAPI.Plugin
@@ -8,8 +10,9 @@ namespace LyokoAPI.Plugin
         public abstract string Name { get; }
         public abstract string Author { get; }
         public bool Enabled { get; private set; }
-
-    
+        public string Version { get; } = "Unversioned";
+        public abstract Stack<String> CompatibleLAPIVersions { get;}
+        
         protected abstract bool OnEnable();
         protected abstract bool OnDisable();
 
