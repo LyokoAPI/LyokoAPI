@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using LyokoAPI.API;
 using LyokoAPI.Events;
 
 namespace LyokoAPI.Plugin
@@ -10,8 +11,8 @@ namespace LyokoAPI.Plugin
         public abstract string Name { get; }
         public abstract string Author { get; }
         public bool Enabled { get; private set; }
-        public string Version { get; } = "Unversioned";
-        public abstract Stack<String> CompatibleLAPIVersions { get;}
+        public LVersion Version { get; } = "0.0";
+        public List<LVersion> CompatibleLAPIVersions { get;} = new List<LVersion>();
         
         protected abstract bool OnEnable();
         protected abstract bool OnDisable();
@@ -68,7 +69,7 @@ namespace LyokoAPI.Plugin
 
         public override string ToString()
         {
-            return $"The plugin {Name} by {Author}";
+            return $"The plugin {Name} by {Author} (V {Version})";
         }
 
         public abstract void OnGameStart(bool storyMode);

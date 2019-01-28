@@ -9,9 +9,9 @@ namespace LyokoAPI.API
 {
     public static class Info
     {
-        public static Version Version()
+        public static LVersion Version()
         {
-            return typeof(Version).Assembly.GetName().Version.ToString();
+            return typeof(LVersion).Assembly.GetName().Version.ToString();
         }
   
     }

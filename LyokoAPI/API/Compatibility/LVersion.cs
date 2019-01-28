@@ -6,7 +6,7 @@ using LyokoAPI.Events;
 
 namespace LyokoAPI.API
 {
-    public class Version
+    public class LVersion
     {
         public int MajorVersion { get; protected set; } = 0;
         public int MinorVersion { get; protected set; } = 0;
@@ -14,7 +14,7 @@ namespace LyokoAPI.API
         public int BuildVersion { get; protected set; } = 0;
         
 
-        public CompatiblityLevel GetCompatibility(Version version)
+        public CompatiblityLevel GetCompatibility(LVersion version)
         {
             CompatiblityLevel level = CompatiblityLevel.None;
             if (MajorVersion == version.MajorVersion)
@@ -37,14 +37,14 @@ namespace LyokoAPI.API
             return level;
         }
 
-        public static Version Parse(string version)
+        public static LVersion Parse(string version)
         {
             Regex validString = new Regex(@"^\w(\.\w)+");
             if (!validString.IsMatch(version))
             {
                 throw new FormatException("Version format must be minimum: X.X");
             }
-            Version parsedVersion = new Version();
+            LVersion parsedVersion = new LVersion();
             var versions = version.Split('.');
 
             if (versions.Length > 4)
@@ -66,21 +66,21 @@ namespace LyokoAPI.API
             return parsedVersion;
         }
 
-        public static bool TryParse(string version, out Version newVersion)
+        public static bool TryParse(string version, out LVersion newVersion)
         {
             newVersion = null;
             try
             {
                 newVersion = Parse(version);
             }
-            catch (FormatException e)
+            catch (FormatException)
             {
                 return false;
             }
 
             return true;
         }
-        public static implicit operator Version(string versionstring)
+        public static implicit operator LVersion(string versionstring)
         {
             if (!TryParse(versionstring,out var result))
             {
