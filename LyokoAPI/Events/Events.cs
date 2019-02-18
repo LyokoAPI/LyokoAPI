@@ -45,8 +45,8 @@ namespace LyokoAPI.Events
 
         public delegate void OnLyokoEvent();
         public delegate void OnActivatorSwitch(ITower tower, APIActivator old,APIActivator newactivator);
-
-        public delegate void OnLogEvent(string message); //Should properly deprecate this
+        
+        public delegate void OnLogEvent(string message);//Should properly deprecate this
 
         public delegate void OnStringEvent(string message);
 

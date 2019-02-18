@@ -5,20 +5,14 @@ namespace LyokoAPI.Events
     public class CommandOutputEvent
     {
         private static event Events.OnStringEvent stringE;
-        public static void Call(string command)
+        public static void Call(string sender, string message)
         {
             if (IsLocked && !Assembly.GetCallingAssembly().Equals(Events.Master))
             {
                 return;
             }
 
-            string finalcommand = command;
-            if (command.StartsWith("api."))
-            {
-                finalcommand = command.Substring(5);
-            }
-            
-            stringE?.Invoke(finalcommand);
+            stringE?.Invoke($"[{sender}] {message}");
         }
 
         public static Events.OnStringEvent Subscribe(Events.OnStringEvent func)
