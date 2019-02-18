@@ -14,9 +14,9 @@ namespace LyokoAPI.API
         public int BuildVersion { get; protected set; } = 0;
         
 
-        public CompatiblityLevel GetCompatibility(LVersion version)
+        public CompatibilityLevel GetCompatibility(LVersion version)
         {
-            CompatiblityLevel level = CompatiblityLevel.None;
+            CompatibilityLevel level = CompatibilityLevel.None;
             if (MajorVersion == version.MajorVersion)
             {
                 level++;
@@ -26,7 +26,7 @@ namespace LyokoAPI.API
                     if (SubVersion == version.SubVersion)
                     {
                         level++;
-                        if (BuildVersion == version.SubVersion)
+                        if (BuildVersion == version.BuildVersion)
                         {
                             level++;
                         }
