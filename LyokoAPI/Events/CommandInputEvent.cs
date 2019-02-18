@@ -13,7 +13,7 @@ namespace LyokoAPI.Events
                 return;
             }
 
-            string finalcommand = command;
+            string finalcommand = command.ToLower();
             if (command.StartsWith("api."))
             {
                 finalcommand = command.Substring(5);
