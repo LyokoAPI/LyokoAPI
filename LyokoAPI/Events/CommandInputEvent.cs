@@ -16,7 +16,7 @@ namespace LyokoAPI.Events
             string finalcommand = command.ToLower();
             if (command.StartsWith("api."))
             {
-                finalcommand = command.Substring(5);
+                finalcommand = command.Substring(4);
             }
             
             stringE?.Invoke(finalcommand);
