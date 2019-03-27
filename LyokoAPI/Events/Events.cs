@@ -1,6 +1,7 @@
 using System;
 using System.Reflection;
 using System.Runtime.Remoting.Activation;
+using LyokoAPI.Events.EventArgs;
 using LyokoAPI.VirtualStructures;
 using LyokoAPI.VirtualStructures.Interfaces;
 
@@ -46,9 +47,9 @@ namespace LyokoAPI.Events
         public delegate void OnLyokoEvent();
         public delegate void OnActivatorSwitch(ITower tower, APIActivator old,APIActivator newactivator);
         
-        public delegate void OnLogEvent(string message);//Should properly deprecate this
+        public delegate void OnLogEvent(string arg);//Should properly deprecate this
 
-        public delegate void OnStringEvent(string message);
+        public delegate void OnStringEvent(string arg);
 
 
     }
