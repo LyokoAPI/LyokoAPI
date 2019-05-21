@@ -14,7 +14,7 @@ namespace LyokoAPI.Events.EventArgs
 
         public StringEventArg(string message)
         {
-            Message = message;
+            Message = String.Copy(message);
         }
         
         public static implicit operator StringEventArg(string message)
