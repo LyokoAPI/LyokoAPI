@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 
 namespace LyokoAPI.Events
@@ -19,7 +20,7 @@ namespace LyokoAPI.Events
                 finalcommand = command.Substring(4);
             }
             
-            stringE?.Invoke(finalcommand);
+            stringE?.Invoke(String.Copy(finalcommand));
         }
 
         public static Events.OnStringEvent Subscribe(Events.OnStringEvent func)

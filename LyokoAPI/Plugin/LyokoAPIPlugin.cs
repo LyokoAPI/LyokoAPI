@@ -12,7 +12,7 @@ namespace LyokoAPI.Plugin
         public abstract string Author { get; }
         public bool Enabled { get; private set; }
         public LVersion Version { get; } = "0.0";
-        public List<LVersion> CompatibleLAPIVersions { get;} = new List<LVersion>();
+        public List<LVersion> CompatibleLAPIVersions { get;} = new List<LVersion>(new LVersion[]{"0.0"});
         
         protected abstract bool OnEnable();
         protected abstract bool OnDisable();
