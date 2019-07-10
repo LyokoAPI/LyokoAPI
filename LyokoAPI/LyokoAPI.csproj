@@ -36,6 +36,10 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="YamlDotNet, Version=6.0.0.0, Culture=neutral, PublicKeyToken=ec19458f3c15af5e">
+      <HintPath>..\packages\YamlDotNet.6.0.0\lib\net35\YamlDotNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APISuperScan.cs" />
@@ -53,7 +57,9 @@
     <Compile Include="Events\TowerHijackEvent.cs" />
     <Compile Include="Events\XanaAwakenEvent.cs" />
     <Compile Include="Events\XanaDefeatEvent.cs" />
+    <Compile Include="Plugin\ConfigManager.cs" />
     <Compile Include="Plugin\LyokoAPIPlugin.cs" />
+    <Compile Include="Plugin\PluginConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VirtualStructures\APIActivator.cs" />
     <Compile Include="VirtualStructures\Interfaces\ISector.cs" />
@@ -62,6 +68,9 @@
     <Compile Include="VirtualStructures\APISector.cs" />
     <Compile Include="VirtualStructures\APITower.cs" />
     <Compile Include="VirtualStructures\APIVirtualWorld.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

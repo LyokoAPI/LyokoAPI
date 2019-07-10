@@ -8,12 +8,17 @@ namespace LyokoAPI.Plugin
 {
     public abstract class LyokoAPIPlugin
     {
+        public LyokoAPIPlugin()
+        {
+            ConfigManager = new ConfigManager(this);
+        }
+
         public abstract string Name { get; }
         public abstract string Author { get; }
         public bool Enabled { get; private set; }
-        public LVersion Version { get; } = "0.0";
-        public List<LVersion> CompatibleLAPIVersions { get;} = new List<LVersion>(new LVersion[]{"0.0"});
-        
+        public virtual LVersion Version { get; } = "0.0";
+        public virtual List<LVersion> CompatibleLAPIVersions { get;} = new List<LVersion>(){"0.0"};
+        protected internal ConfigManager ConfigManager { get;  set; }
         protected abstract bool OnEnable();
         protected abstract bool OnDisable();
 
@@ -35,7 +40,7 @@ namespace LyokoAPI.Plugin
             }
             catch (Exception e)
             {
-                LyokoLogger.Log("LyokoAPIPlugin",$"{ToString()} threw an exception while enabling: {e.GetType()} {e.StackTrace}");
+                LyokoLogger.Log("LyokoAPIPlugin",$"{ToString()} threw an exception while enabling: {e.ToString()}");
                 Disable();
             }
 
