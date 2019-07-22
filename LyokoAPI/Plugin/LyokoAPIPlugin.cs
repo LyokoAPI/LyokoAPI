@@ -40,7 +40,7 @@ namespace LyokoAPI.Plugin
             }
             catch (Exception e)
             {
-                LyokoLogger.Log("LyokoAPIPlugin",$"{ToString()} threw an exception while enabling: {e.ToString()}");
+                LyokoLogger.Log("LyokoAPIPlugin",$"{ToString()} threw an exception while enabling: {e.ToString() + (e.Message)}");
                 Disable();
             }
 
@@ -64,7 +64,7 @@ namespace LyokoAPI.Plugin
             }
             catch (Exception e)
             {
-                LyokoLogger.Log("LyokoAPIPlugin",$"{ToString()} threw an exception while disabling: {e.GetType()} {e.StackTrace}");
+                LyokoLogger.Log("LyokoAPIPlugin",$"{ToString()} threw an exception while disabling: {e.GetType()} {e.StackTrace + (e.Message)}");
             }
             
 

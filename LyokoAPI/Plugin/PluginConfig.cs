@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.CompilerServices;
 
 namespace LyokoAPI.Plugin
 {
@@ -22,7 +21,7 @@ namespace LyokoAPI.Plugin
                 FilePath = Path.Combine(plugin.ConfigManager.PluginConfigDirectory,nameOrPath+".yaml");
                 Values.Add("config_name",nameOrPath); 
             }
-            
+
         }
 
         private void Load(LyokoAPIPlugin plugin, string path)
@@ -41,7 +40,7 @@ namespace LyokoAPI.Plugin
         {
             var serializer = new YamlDotNet.Serialization.Serializer();
             var file = serializer.Serialize(Values);
-            File.WriteAllText(FilePath,file);
+            File.WriteAllText(new FileInfo(FilePath).FullName, file);
         }
     }
 }
