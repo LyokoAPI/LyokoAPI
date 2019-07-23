@@ -19,6 +19,7 @@ namespace LyokoAPI.Plugin
         public virtual LVersion Version { get; } = "0.0";
         public virtual List<LVersion> CompatibleLAPIVersions { get;} = new List<LVersion>(){"0.0"};
         protected internal ConfigManager ConfigManager { get;  set; }
+        public virtual List<Dependency> Dependencies { get; } = new List<Dependency>(){};
         protected abstract bool OnEnable();
         protected abstract bool OnDisable();
 
@@ -79,5 +80,8 @@ namespace LyokoAPI.Plugin
 
         public abstract void OnGameStart(bool storyMode);
         public abstract void OnGameEnd(bool failed);
+
+        public abstract void OnInterfaceExit();
+        public abstract void OnInterfaceEnter();
     }
 }
