@@ -8,7 +8,7 @@ namespace LyokoAPI.Plugin
     {
         public string FilePath { get; private set; }
         public string Name { get; private set; }
-        public Dictionary<string, string> Values = new Dictionary<string, string>();
+        public Dictionary<string, string> Values;
         public PluginConfig(LyokoAPIPlugin plugin, string nameOrPath)
         {
             if (File.Exists(nameOrPath))
@@ -19,7 +19,8 @@ namespace LyokoAPI.Plugin
             {
                 Name = nameOrPath;
                 FilePath = Path.Combine(plugin.ConfigManager.PluginConfigDirectory,nameOrPath+".yaml");
-                Values.Add("config_name",nameOrPath); 
+                Values = new Dictionary<string, string>();
+                Values.Add("config_name",nameOrPath);
             }
 
         }
@@ -40,6 +41,7 @@ namespace LyokoAPI.Plugin
         {
             var serializer = new YamlDotNet.Serialization.Serializer();
             var file = serializer.Serialize(Values);
+            File.Delete(FilePath);
             File.WriteAllText(new FileInfo(FilePath).FullName, file);
         }
     }
