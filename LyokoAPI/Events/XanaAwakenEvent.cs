@@ -26,7 +26,7 @@ namespace LyokoAPI.Events
 
         public static void Unsubscribe(Events.OnLyokoEvent func)
         {
-            XanaAwakenE += func;
+            XanaAwakenE -= func;
         }
         
         #region locking
