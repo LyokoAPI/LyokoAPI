@@ -1,3 +1,4 @@
+using LyokoAPI.RealWorld.Location.Abstract;
 using LyokoAPI.VirtualStructures.Interfaces;
 
 namespace LyokoAPI.VirtualStructures
@@ -36,7 +37,21 @@ namespace LyokoAPI.VirtualStructures
             }
         }
 
-        
+
+        public string GetLocationName()
+        {
+            return $"{Sector.GetLocationName()} ,Tower {Number}";
+        }
+
+        public ITower GetInnerLocation()
+        {
+            return this;
+        }
+
+        public GenericLocation AsGenericLocation()
+        {
+            return GenericLocation.MakeGenericLocation(this);
+        }
     }
     
     

@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using LyokoAPI.RealWorld.Location;
+using LyokoAPI.RealWorld.Location.Abstract;
 using LyokoAPI.VirtualStructures.Interfaces;
 
 namespace LyokoAPI.VirtualStructures
@@ -43,5 +45,19 @@ namespace LyokoAPI.VirtualStructures
         public APISector(string virtualworldName, string sectorName, int towers = 0)
             : this(new APIVirtualWorld(sectorName), sectorName, towers){}
 
+        public string GetLocationName()
+        {
+            return $"{World.Name} : {Name}";
+        }
+
+        public ISector GetInnerLocation()
+        {
+            return this;
+        }
+
+        public GenericLocation AsGenericLocation()
+        {
+            return this;
+        }
     }
 }

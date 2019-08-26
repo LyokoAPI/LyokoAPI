@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LyokoAPI</RootNamespace>
     <AssemblyName>LyokoAPI</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -32,6 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
@@ -62,6 +63,15 @@
     <Compile Include="Plugin\PluginConfig.cs" />
     <Compile Include="Plugin\PluginDependency.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RealWorld\Location\Abstract\GenericLocation.cs" />
+    <Compile Include="RealWorld\Location\Abstract\ILocation.cs" />
+    <Compile Include="RealWorld\Location\Abstract\LocationType.cs" />
+    <Compile Include="RealWorld\Location\APILocation.cs" />
+    <Compile Include="RealWorld\Location\APILocations.cs" />
+    <Compile Include="VirtualEntities\LyokoWarrior\LyokoWarrior.cs" />
+    <Compile Include="VirtualEntities\LyokoWarrior\LyokoWarriorName.cs" />
+    <Compile Include="VirtualEntities\LyokoWarrior\LyokoWarriors.cs" />
+    <Compile Include="VirtualEntities\LyokoWarrior\Status.cs" />
     <Compile Include="VirtualStructures\APIActivator.cs" />
     <Compile Include="VirtualStructures\Interfaces\ISector.cs" />
     <Compile Include="VirtualStructures\Interfaces\ITower.cs" />
@@ -72,6 +82,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Events\LWEvents" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

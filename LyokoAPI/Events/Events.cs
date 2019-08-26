@@ -2,6 +2,8 @@ using System;
 using System.Reflection;
 using System.Runtime.Remoting.Activation;
 using LyokoAPI.Events.EventArgs;
+using LyokoAPI.VirtualEntities;
+using LyokoAPI.VirtualEntities.LyokoWarrior;
 using LyokoAPI.VirtualStructures;
 using LyokoAPI.VirtualStructures.Interfaces;
 
@@ -50,6 +52,8 @@ namespace LyokoAPI.Events
         public delegate void OnLogEvent(string arg);//Should properly deprecate this
 
         public delegate void OnStringEvent(string arg);
+
+        public delegate void OnLyokoWEvent(LyokoWarriorName warriorName);
 
 
     }

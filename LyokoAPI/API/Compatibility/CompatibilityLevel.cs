@@ -1,4 +1,4 @@
-namespace LyokoAPI.API
+namespace LyokoAPI.API.Compatibility
 {
     public enum CompatibilityLevel : byte
     {

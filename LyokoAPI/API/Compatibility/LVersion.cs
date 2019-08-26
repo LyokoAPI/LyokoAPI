@@ -1,10 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text.RegularExpressions;
-using LyokoAPI.Events;
 
-namespace LyokoAPI.API
+namespace LyokoAPI.API.Compatibility
 {
     public class LVersion
     {
