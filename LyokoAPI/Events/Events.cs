@@ -53,7 +53,7 @@ namespace LyokoAPI.Events
 
         public delegate void OnStringEvent(string arg);
 
-        public delegate void OnLyokoWEvent(LyokoWarriorName warriorName);
+        public delegate void OnLyokoWEvent(LyokoWarrior warriorName);
 
 
     }

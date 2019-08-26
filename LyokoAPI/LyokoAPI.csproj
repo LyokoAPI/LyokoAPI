@@ -51,6 +51,13 @@
     <Compile Include="Events\CommandInputEvent.cs" />
     <Compile Include="Events\CommandOutputEvent.cs" />
     <Compile Include="Events\EventArgs\StringEventArg.cs" />
+    <Compile Include="Events\LWEvents\LW_DevirtEvent.cs" />
+    <Compile Include="Events\LWEvents\LW_HealEvent.cs" />
+    <Compile Include="Events\LWEvents\LW_HurtEvent.cs" />
+    <Compile Include="Events\LWEvents\LW_MoveEvent.cs" />
+    <Compile Include="Events\LWEvents\LW_DeathEvent.cs" />
+    <Compile Include="Events\LWEvents\LW_FrontierEvent.cs" />
+    <Compile Include="Events\LWEvents\LW_VirtEvent.cs" />
     <Compile Include="Events\LyokoLogger.cs" />
     <Compile Include="Events\TowerActivationEvent.cs" />
     <Compile Include="Events\TowerDeactivationEvent.cs" />
@@ -82,9 +89,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Events\LWEvents" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

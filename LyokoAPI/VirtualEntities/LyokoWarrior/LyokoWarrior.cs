@@ -55,7 +55,7 @@ namespace LyokoAPI.VirtualEntities.LyokoWarrior
 
         internal LyokoWarrior Virtualize(ISector destination)
         {
-            Location = destination.AsGenericLocation();
+            Move(destination);
             ResetHealth();
             Status = Status.VIRTUALIZED;
             return this;
@@ -70,10 +70,15 @@ namespace LyokoAPI.VirtualEntities.LyokoWarrior
 
         internal LyokoWarrior CodeEarth(ILocation<APILocation> location)
         {
-            Location = location.AsGenericLocation();
+            Move(location);
             Status = Status.EARTH;
             ResetHealth();
             return this;
+        }
+
+        internal LyokoWarrior CodeEarth()
+        {
+            return CodeEarth(APILocations.SCANNERS);
         }
 
         internal LyokoWarrior Kill()
@@ -86,8 +91,20 @@ namespace LyokoAPI.VirtualEntities.LyokoWarrior
 
         internal LyokoWarrior Translate(ILocation<APILocation> location)
         {
-            Location = location.AsGenericLocation();
+            Move(location);
             Status = Status.TRANSLATED;
+            return this;
+        }
+
+        internal LyokoWarrior Move(ILocation<APILocation> location)
+        {
+            Location = location.AsGenericLocation();
+            return this;
+        }
+
+        internal LyokoWarrior Move(ILocation<ISector> location)
+        {
+            Location = location.AsGenericLocation();
             return this;
         }
 
