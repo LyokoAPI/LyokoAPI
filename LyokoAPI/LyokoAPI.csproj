@@ -57,7 +57,9 @@
     <Compile Include="Events\LWEvents\LW_MoveEvent.cs" />
     <Compile Include="Events\LWEvents\LW_DeathEvent.cs" />
     <Compile Include="Events\LWEvents\LW_FrontierEvent.cs" />
+    <Compile Include="Events\LWEvents\LW_TranslationEvent.cs" />
     <Compile Include="Events\LWEvents\LW_VirtEvent.cs" />
+    <Compile Include="Events\LWEvents\LW_XanaficationEvent.cs" />
     <Compile Include="Events\LyokoLogger.cs" />
     <Compile Include="Events\TowerActivationEvent.cs" />
     <Compile Include="Events\TowerDeactivationEvent.cs" />

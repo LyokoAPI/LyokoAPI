@@ -7,7 +7,7 @@ namespace LyokoAPI.Events.LWEvents
     public class LW_MoveEvent
     {
         public static event Events.OnLyokoWEvent LwE;
-        
+        //todo: add real Locations
         public static void Call(LyokoWarrior warrior, ISector sector)
         {
             warrior.Move(sector);

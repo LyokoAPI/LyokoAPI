@@ -89,6 +89,12 @@ namespace LyokoAPI.VirtualEntities.LyokoWarrior
             return this;
         }
 
+        internal LyokoWarrior Xanafy()
+        {
+            Status = Status.XANAFIED;
+            return this;
+        }
+
         internal LyokoWarrior Translate(ILocation<APILocation> location)
         {
             Move(location);
