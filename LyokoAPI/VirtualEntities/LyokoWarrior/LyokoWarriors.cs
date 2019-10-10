@@ -27,8 +27,8 @@ namespace LyokoAPI.VirtualEntities.LyokoWarrior
         {
             try
             {
-                LyokoWarrior warriorName = (LyokoWarrior) Enum.Parse(typeof(LyokoWarriorName), name, true);
-                return warriorName;
+                LyokoWarriorName warriorName = (LyokoWarriorName) Enum.Parse(typeof(LyokoWarriorName), name, true);
+                return GetByName(warriorName);
             }
             catch (ArgumentException e)
             {
