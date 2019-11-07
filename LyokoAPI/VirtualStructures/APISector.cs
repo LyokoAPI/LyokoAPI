@@ -43,7 +43,7 @@ namespace LyokoAPI.VirtualStructures
         }
 
         public APISector(string virtualworldName, string sectorName, int towers = 0)
-            : this(new APIVirtualWorld(sectorName), sectorName, towers){}
+            : this(new APIVirtualWorld(virtualworldName), sectorName, towers){}
 
         public string GetLocationName()
         {
