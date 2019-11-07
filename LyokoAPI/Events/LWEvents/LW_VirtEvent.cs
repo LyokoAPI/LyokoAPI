@@ -13,10 +13,6 @@ namespace LyokoAPI.Events.LWEvents
             warrior.Virtualize(sector);
             LwE?.Invoke(warrior);
         }
-        public static void Call(LyokoWarrior warrior, APISector sector)
-        {
-            Call(warrior,sector);
-        }
         public static void Call(LyokoWarrior warrior, string virtualworld, string sector)
         {
             Call(warrior,new APISector(virtualworld, sector));
