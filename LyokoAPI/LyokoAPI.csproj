@@ -47,6 +47,7 @@
     <Compile Include="API\Compatibility\CompatibilityLevel.cs" />
     <Compile Include="API\Compatibility\LVersion.cs" />
     <Compile Include="API\Info.cs" />
+    <Compile Include="API\LAPIListener.cs" />
     <Compile Include="API\LyokoParser.cs" />
     <Compile Include="Events\CommandInputEvent.cs" />
     <Compile Include="Events\CommandOutputEvent.cs" />

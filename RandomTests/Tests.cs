@@ -1,6 +1,7 @@
 ﻿using System;
 using LyokoAPI.Events.LWEvents;
 using LyokoAPI.VirtualEntities.LyokoWarrior;
+using LyokoAPI.VirtualStructures;
 using NUnit.Framework;
 
 namespace TestProject2
@@ -9,22 +10,10 @@ namespace TestProject2
     public class Tests
     {
         [Test]
-        public void Test1()
+        public void TestNames()
         {
-            var warrior = LyokoWarriors.GetByName("ODD");
-            Console.WriteLine(warrior.WarriorName);
-            try
-            {
-                LW_VirtEvent.Call(warrior,"forest");
-
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
-            Console.WriteLine(warrior.Location.GetLocationName());
-            
-            
+            var sector = new APISector("Lyoko","forest");
+            Console.WriteLine($"{sector.Name} - {sector.World.Name}");
         }
         
     }
