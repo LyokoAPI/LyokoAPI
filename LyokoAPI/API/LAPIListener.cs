@@ -10,7 +10,7 @@ namespace LyokoAPI.API
     {
         private bool Listening = false;
 
-        public void StartListening()
+        public virtual void StartListening()
         {
             if (Listening)
             {
@@ -33,11 +33,12 @@ namespace LyokoAPI.API
             XanaDefeatEvent.Subscribe(onXanaDefeat);
             CommandInputEvent.Subscribe(onCommandInput);
             CommandOutputEvent.Subscribe(onCommandOutput);
+            LyokoLogger.Subscribe(onLyokoLog);
             Listening = true;
 
         }
 
-        public void StopListening()
+        public virtual void StopListening()
         {
             if (!Listening)
             {
@@ -60,6 +61,7 @@ namespace LyokoAPI.API
             XanaDefeatEvent.Unsubscribe(onXanaDefeat);
             CommandInputEvent.Unsubscribe(onCommandInput);
             CommandOutputEvent.Unsubscribe(onCommandOutput);
+            LyokoLogger.Unsubscribe(onLyokoLog);
             Listening = false;
 
         }
@@ -141,6 +143,11 @@ namespace LyokoAPI.API
         }
 
         public virtual void onCommandOutput(string message)
+        {
+            
+        }
+
+        public virtual void onLyokoLog(string message)
         {
             
         }
