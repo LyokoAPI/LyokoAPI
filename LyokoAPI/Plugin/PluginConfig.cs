@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using YamlDotNet.Serialization;
 
 namespace LyokoAPI.Plugin
 {
@@ -27,12 +28,16 @@ namespace LyokoAPI.Plugin
 
         private void Load(LyokoAPIPlugin plugin, string path)
         {
-            var values =
+           /* var values =
                 new YamlDotNet.Serialization.Deserializer().Deserialize<Dictionary<string, String>>(
                     new StringReader(path));
-            Name = values["config_name"];
-            FilePath = Path.Combine(plugin.ConfigManager.PluginConfigDirectory,Name+".yaml");
-            Values = values;
+            */
+           var input = new StringReader(File.ReadAllText(path));
+           var deserializer = new DeserializerBuilder().Build();
+           var values = deserializer.Deserialize<Dictionary<string,string>>(input);
+           Name = values["config_name"];
+           FilePath = Path.Combine(plugin.ConfigManager.PluginConfigDirectory,Name+".yaml");
+           Values = values;
         }
 
 
