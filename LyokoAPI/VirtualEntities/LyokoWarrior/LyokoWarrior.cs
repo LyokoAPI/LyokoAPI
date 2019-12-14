@@ -95,6 +95,14 @@ namespace LyokoAPI.VirtualEntities.LyokoWarrior
             return this;
         }
 
+        internal LyokoWarrior Dexanafy()
+        {
+            Location = APILocations.SCANNERS;
+            Status = Status.EARTH;
+            ResetHealth();
+            return this;
+        }
+
         internal LyokoWarrior Translate(ILocation<APILocation> location)
         {
             Move(location);
