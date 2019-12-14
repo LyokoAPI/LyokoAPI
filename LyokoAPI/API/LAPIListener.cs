@@ -26,6 +26,7 @@ namespace LyokoAPI.API
             LW_DeathEvent.Subscribe(onLW_Devirt);
             LW_HealEvent.Subscribe(onLW_Heal);
             LW_XanaficationEvent.Subscribe(onLW_Xanafication);
+            LW_DexanaficationEvent.Subscribe(onLW_Dexanafication);
             TowerActivationEvent.Subscribe(onTowerActivation);
             TowerDeactivationEvent.Subscribe(onTowerDeactivation);
             TowerHijackEvent.Subscribe(onTowerHijack);
@@ -57,6 +58,7 @@ namespace LyokoAPI.API
             LW_DeathEvent.Unsubscribe(onLW_Devirt);
             LW_HealEvent.Unsubscribe(onLW_Heal);
             LW_XanaficationEvent.Unsubscribe(onLW_Xanafication);
+            LW_DexanaficationEvent.Unsubscribe(onLW_Dexanafication);
             TowerActivationEvent.Unsubscribe(onTowerActivation);
             TowerDeactivationEvent.Unsubscribe(onTowerDeactivation);
             TowerHijackEvent.Unsubscribe(onTowerHijack);
@@ -108,10 +110,14 @@ namespace LyokoAPI.API
 
         public virtual void onLW_Virt(LyokoWarrior warrior)
         {
-            
+
         }
 
         public virtual void onLW_Xanafication(LyokoWarrior warrior)
+        {
+        }
+
+        public virtual void onLW_Dexanafication(LyokoWarrior warrior)
         {
         }
 
