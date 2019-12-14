@@ -8,9 +8,15 @@ namespace LyokoAPI.API
 {
     public abstract class LAPIListener
     {
+        private bool Listening = false;
 
-        public void StartListening()
+        public virtual void StartListening()
         {
+            if (Listening)
+            {
+                return;
+            }
+
             LW_DeathEvent.Subscribe(onLW_Death);
             LW_MoveEvent.Subscribe(onLW_Move);
             LW_FrontierEvent.Subscribe(onLW_Frontier);
@@ -25,10 +31,20 @@ namespace LyokoAPI.API
             TowerHijackEvent.Subscribe(onTowerHijack);
             XanaAwakenEvent.Subscribe(onXanaAwaken);
             XanaDefeatEvent.Subscribe(onXanaDefeat);
+            CommandInputEvent.Subscribe(onCommandInput);
+            CommandOutputEvent.Subscribe(onCommandOutput);
+            LyokoLogger.Subscribe(onLyokoLog);
+            Listening = true;
+
         }
 
-        public void StopListening()
+        public virtual void StopListening()
         {
+            if (!Listening)
+            {
+                return;
+            }
+
             LW_DeathEvent.Unsubscribe(onLW_Death);
             LW_MoveEvent.Unsubscribe(onLW_Move);
             LW_FrontierEvent.Unsubscribe(onLW_Frontier);
@@ -43,6 +59,11 @@ namespace LyokoAPI.API
             TowerHijackEvent.Unsubscribe(onTowerHijack);
             XanaAwakenEvent.Unsubscribe(onXanaAwaken);
             XanaDefeatEvent.Unsubscribe(onXanaDefeat);
+            CommandInputEvent.Unsubscribe(onCommandInput);
+            CommandOutputEvent.Unsubscribe(onCommandOutput);
+            LyokoLogger.Unsubscribe(onLyokoLog);
+            Listening = false;
+
         }
 
 
@@ -112,6 +133,21 @@ namespace LyokoAPI.API
         }
 
         public virtual void onXanaDefeat()
+        {
+            
+        }
+
+        public virtual void onCommandInput(string input)
+        {
+            
+        }
+
+        public virtual void onCommandOutput(string message)
+        {
+            
+        }
+
+        public virtual void onLyokoLog(string message)
         {
             
         }
