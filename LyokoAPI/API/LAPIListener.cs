@@ -34,6 +34,9 @@ namespace LyokoAPI.API
             CommandInputEvent.Subscribe(onCommandInput);
             CommandOutputEvent.Subscribe(onCommandOutput);
             LyokoLogger.Subscribe(onLyokoLog);
+            VirtualWorldDestructionEvent.Subscribe(onWorldDestruction);
+            SectorDestructionEvent.Subscribe(onSectorDestruction);
+            SectorCreationEvent.Subscribe(onSectorCreation);
             Listening = true;
 
         }
@@ -148,6 +151,22 @@ namespace LyokoAPI.API
         }
 
         public virtual void onLyokoLog(string message)
+        {
+            
+        }
+
+        public virtual void onWorldDestruction(IVirtualWorld world)
+        {
+            
+        }
+
+        public virtual void onSectorDestruction(ISector sector)
+        {
+            
+        }
+        
+
+        public virtual void onSectorCreation(ISector sector)
         {
             
         }
