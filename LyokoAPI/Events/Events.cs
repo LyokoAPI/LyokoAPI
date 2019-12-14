@@ -4,6 +4,7 @@ using System.Runtime.Remoting.Activation;
 using LyokoAPI.Events.EventArgs;
 using LyokoAPI.VirtualEntities;
 using LyokoAPI.VirtualEntities.LyokoWarrior;
+using LyokoAPI.VirtualEntities.Overvehicle;
 using LyokoAPI.VirtualStructures;
 using LyokoAPI.VirtualStructures.Interfaces;
 
@@ -54,6 +55,10 @@ namespace LyokoAPI.Events
         public delegate void OnStringEvent(string arg);
 
         public delegate void OnLyokoWEvent(LyokoWarrior warriorName);
+
+        public delegate void OnOvervehicleEvent(Overvehicle overvehicleName);
+
+        public delegate void OnOvervehicleRideEvent(Overvehicle overvehicleName, LyokoWarrior warriorName);
 
         public delegate void OnSectorEvent(ISector sector);
 
