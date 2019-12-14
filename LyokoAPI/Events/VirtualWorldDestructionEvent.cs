@@ -5,7 +5,7 @@ using LyokoAPI.VirtualStructures.Interfaces;
 
 namespace LyokoAPI.Events
 {
-    class VirtualWorldDestructionEvent
+    public class VirtualWorldDestructionEvent
     {
         private static event Events.OnVirtualWorldEvent VirtualWorldE;
         public static void Call(IVirtualWorld world)
