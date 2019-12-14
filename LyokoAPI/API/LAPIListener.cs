@@ -67,6 +67,9 @@ namespace LyokoAPI.API
             CommandInputEvent.Unsubscribe(onCommandInput);
             CommandOutputEvent.Unsubscribe(onCommandOutput);
             LyokoLogger.Unsubscribe(onLyokoLog);
+            VirtualWorldDestructionEvent.Unsubscribe(onWorldDestruction);
+            SectorDestructionEvent.Unsubscribe(onSectorDestruction);
+            SectorCreationEvent.Subscribe(onSectorCreation);
             Listening = false;
 
         }
