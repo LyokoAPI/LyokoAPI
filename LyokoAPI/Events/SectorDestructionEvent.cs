@@ -17,7 +17,7 @@ namespace LyokoAPI.Events
             SectorE?.Invoke(sector);
         }
 
-        public static void Call(string world, string sector, int towers = 0)
+        public static void Call(string world, string sector, int towers = 10)
         {
             if (IsLocked && !Assembly.GetCallingAssembly().Equals(Events.Master))
             {
@@ -27,7 +27,7 @@ namespace LyokoAPI.Events
             Call(_sector);
         }
 
-        public static void Call(string sector, int towers = 0)
+        public static void Call(string sector, int towers = 10)
         {
             if (IsLocked && !Assembly.GetCallingAssembly().Equals(Events.Master))
             {
