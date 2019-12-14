@@ -55,6 +55,9 @@ namespace LyokoAPI.Events
 
         public delegate void OnLyokoWEvent(LyokoWarrior warriorName);
 
+        public delegate void OnSectorEvent(ISector sector);
+
+        public delegate void OnVirtualWorldEvent(IVirtualWorld world);
 
     }
 }
