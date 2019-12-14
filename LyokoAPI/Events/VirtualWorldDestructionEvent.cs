@@ -17,6 +17,26 @@ namespace LyokoAPI.Events
             VirtualWorldE?.Invoke(world);
         }
 
+        public static void Call(string world, params ISector[] sectors)
+        {
+            if (IsLocked && !Assembly.GetCallingAssembly().Equals(Events.Master))
+            {
+                return;
+            }
+            APIVirtualWorld _world = new APIVirtualWorld(world, sectors);
+            Call(_world);
+        }
+
+        public static void Call(params ISector[] sectors)
+        {
+            if (IsLocked && !Assembly.GetCallingAssembly().Equals(Events.Master))
+            {
+                return;
+            }
+            APIVirtualWorld _world = new APIVirtualWorld("Lyoko", sectors);
+            Call(_world);
+        }
+
         public static Events.OnVirtualWorldEvent Subscribe(Events.OnVirtualWorldEvent func)
         {
             VirtualWorldE += func;

@@ -17,6 +17,26 @@ namespace LyokoAPI.Events
             SectorE?.Invoke(sector);
         }
 
+        public static void Call(string world, string sector, int towers = 0)
+        {
+            if (IsLocked && !Assembly.GetCallingAssembly().Equals(Events.Master))
+            {
+                return;
+            }
+            APISector _sector = new APISector(world, sector, towers);
+            Call(_sector);
+        }
+
+        public static void Call(string sector, int towers = 0)
+        {
+            if (IsLocked && !Assembly.GetCallingAssembly().Equals(Events.Master))
+            {
+                return;
+            }
+            APISector _sector = new APISector("Lyoko", sector, towers);
+            Call(_sector);
+        }
+
         public static Events.OnSectorEvent Subscribe(Events.OnSectorEvent func)
         {
             SectorE += func;
