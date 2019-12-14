@@ -64,6 +64,9 @@
     <Compile Include="Events\LWEvents\LW_XanaficationEvent.cs" />
     <Compile Include="Events\LyokoLogger.cs" />
     <Compile Include="Events\OVEvents\OV_DevirtEvent.cs" />
+    <Compile Include="Events\OVEvents\OV_GetOffEvent.cs" />
+    <Compile Include="Events\OVEvents\OV_HurtEvent.cs" />
+    <Compile Include="Events\OVEvents\OV_RideEvent.cs" />
     <Compile Include="Events\OVEvents\OV_VirtEvent.cs" />
     <Compile Include="Events\SectorCreationEvent.cs" />
     <Compile Include="Events\SectorDestructionEvent.cs" />
