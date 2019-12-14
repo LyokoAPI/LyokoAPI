@@ -1,6 +1,8 @@
 ﻿using System;
 using LyokoAPI.Events.LWEvents;
 using LyokoAPI.VirtualEntities.LyokoWarrior;
+using LyokoAPI.VirtualStructures;
+using LyokoAPI.VirtualStructures.Interfaces;
 using NUnit.Framework;
 
 namespace TestProject2
@@ -9,22 +11,18 @@ namespace TestProject2
     public class Tests
     {
         [Test]
-        public void Test1()
+        public void TestNames()
         {
-            var warrior = LyokoWarriors.GetByName("ODD");
-            Console.WriteLine(warrior.WarriorName);
-            try
-            {
-                LW_VirtEvent.Call(warrior,"forest");
+            var sector = new APISector("Lyoko","forest");
+            Console.WriteLine($"{sector.Name} - {sector.World.Name}");
+            APITower tower = new APITower("lyoko", "forest", 1);
 
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
-            Console.WriteLine(warrior.Location.GetLocationName());
+            tower.Activator = APIActivator.XANA;
+            ITower itower = tower;
             
-            
+            Assert.AreEqual(APIActivator.XANA.ToString(), $"{itower.Activator}");
+
+
         }
         
     }

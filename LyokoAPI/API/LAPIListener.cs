@@ -100,6 +100,7 @@ namespace LyokoAPI.API
             //Logger Events
             LyokoLogger.Unsubscribe(onLyokoLog);
 
+
             //Virtual World Events
             VirtualWorldDestructionEvent.Subscribe(onWorldDestruction);
 
@@ -113,6 +114,7 @@ namespace LyokoAPI.API
             OV_RideEvent.Unsubscribe(onOV_Ride);
             OV_GetOffEvent.Unsubscribe(onOV_GetOff);
             OV_HurtEvent.Unsubscribe(onOV_Hurt);
+
 
             Listening = false;
 
