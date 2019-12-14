@@ -58,9 +58,9 @@ namespace LyokoAPI.API
             //Overvehicle events
             OV_VirtEvent.Subscribe(onOV_Virt);
             OV_DevirtEvent.Subscribe(onOV_Devirt);
-            //OV_RideEvent.Subscribe(onOV_Ride); //TODO: Add these
-            //OV_GetOffEvent.Subscribe(onOV_GetOff);
-            //OV_HurtEvent.Subscribe(onOV_Hurt);
+            OV_RideEvent.Subscribe(onOV_Ride); 
+            OV_GetOffEvent.Subscribe(onOV_GetOff);
+            OV_HurtEvent.Subscribe(onOV_Hurt);
             Listening = true;
 
         }
@@ -111,9 +111,9 @@ namespace LyokoAPI.API
             //Overvehicle events
             OV_VirtEvent.Unsubscribe(onOV_Virt);
             OV_DevirtEvent.Unsubscribe(onOV_Devirt);
-            //OV_RideEvent.Unsubscribe(onOV_Ride); //TODO add these
-            //OV_GetOffEvent.Unsubscribe(onOV_GetOff);
-            //OV_HurtEvent.Unsubscribe(onOV_Hurt);
+            OV_RideEvent.Unsubscribe(onOV_Ride); 
+            OV_GetOffEvent.Unsubscribe(onOV_GetOff);
+            OV_HurtEvent.Unsubscribe(onOV_Hurt);
 
 
             Listening = false;
