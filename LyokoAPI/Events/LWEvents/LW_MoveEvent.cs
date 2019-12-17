@@ -9,7 +9,7 @@ namespace LyokoAPI.Events.LWEvents
         public static event Events.OnLyokoWEvent CDLwE;
         public static event Events.OnLyokoWEvent ALwE;
         //todo: add real Locations
-        //Change Directions
+        //Change Destination
         public static void Call(LyokoWarrior warrior, ISector sector)
         {
             warrior.Move(sector);
