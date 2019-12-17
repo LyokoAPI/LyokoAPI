@@ -23,7 +23,7 @@ namespace LyokoAPI.Commands
                 CheckLength(MinArgs, MaxArgs);
                 DoCommand(_args);
             }
-            catch (MiniLyokoException e)
+            catch (LapiException e)
             {
                 e.Resolve();
             }

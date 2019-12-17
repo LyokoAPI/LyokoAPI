@@ -3,7 +3,7 @@ using LyokoAPI.Commands;
 
 namespace LyokoAPI.Exceptions
 {
-    public class CommandException : MiniLyokoException
+    public class CommandException : LapiException
     {
         public string ErrorMessage { get; }
         public string Command { get; }

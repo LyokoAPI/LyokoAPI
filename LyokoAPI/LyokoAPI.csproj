@@ -81,7 +81,7 @@
     <Compile Include="Events\XanaAwakenEvent.cs" />
     <Compile Include="Events\XanaDefeatEvent.cs" />
     <Compile Include="Exceptions\CommandException.cs" />
-    <Compile Include="Exceptions\MiniLyokoException.cs" />
+    <Compile Include="Exceptions\LapiException.cs" />
     <Compile Include="Plugin\ConfigManager.cs" />
     <Compile Include="Plugin\LyokoAPIPlugin.cs" />
     <Compile Include="Plugin\PluginConfig.cs" />
