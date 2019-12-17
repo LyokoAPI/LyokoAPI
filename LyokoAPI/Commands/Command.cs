@@ -6,7 +6,7 @@ using LyokoAPI.Events;
 
 namespace LyokoAPI.Commands
 {
-    public abstract class Command
+    public abstract class Command : ICommand
     {
         public abstract string Name { get; set; }
         public virtual int MinArgs { get; set; } = 0;
@@ -14,7 +14,7 @@ namespace LyokoAPI.Commands
         public virtual string DisplayName => Name;
         public virtual string Usage => GetSubCommandsAsString();
         private string[] _args;
-        public virtual List<Command> subCommands { get; protected set; } = new List<Command>();
+        public virtual List<ICommand> subCommands { get; protected set; } = new List<ICommand>();
         public void Run(string[] args = null)
         {
             _args = args ?? new string[] { };
@@ -23,7 +23,7 @@ namespace LyokoAPI.Commands
                 CheckLength(MinArgs, MaxArgs);
                 DoCommand(_args);
             }
-            catch (MiniLyokoException e)
+            catch (LapiException e)
             {
                 e.Resolve();
             }
@@ -106,18 +106,6 @@ namespace LyokoAPI.Commands
             sub = sub.TrimEnd(',');
             sub += (']');
             return sub;
-        }
-
-        private string GetUsage()
-        {
-            if (subCommands.Any())
-            {
-                return GetSubCommandsAsString();
-            }
-            else
-            {
-                return "N/A";
-            }
         }
     }
 }
