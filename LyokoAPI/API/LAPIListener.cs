@@ -27,7 +27,7 @@ namespace LyokoAPI.API
             LW_HurtEvent.Subscribe(onLW_Hurt);
             LW_TranslationEvent.Subscribe(onLW_Trans);
             LW_VirtEvent.Subscribe(onLW_Virt);
-            LW_DeathEvent.Subscribe(onLW_Devirt);
+            LW_DevirtEvent.Subscribe(onLW_Devirt);
             LW_HealEvent.Subscribe(onLW_Heal);
             LW_XanaficationEvent.Subscribe(onLW_Xanafication);
             LW_DexanaficationEvent.Subscribe(onLW_Dexanafication);
@@ -79,7 +79,7 @@ namespace LyokoAPI.API
             LW_HurtEvent.Unsubscribe(onLW_Hurt);
             LW_TranslationEvent.Unsubscribe(onLW_Trans);
             LW_VirtEvent.Unsubscribe(onLW_Virt);
-            LW_DeathEvent.Unsubscribe(onLW_Devirt);
+            LW_DevirtEvent.Unsubscribe(onLW_Devirt);
             LW_HealEvent.Unsubscribe(onLW_Heal);
             LW_XanaficationEvent.Unsubscribe(onLW_Xanafication);
             LW_DexanaficationEvent.Unsubscribe(onLW_Dexanafication);

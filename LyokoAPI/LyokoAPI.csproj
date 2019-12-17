@@ -49,6 +49,9 @@
     <Compile Include="API\Info.cs" />
     <Compile Include="API\LAPIListener.cs" />
     <Compile Include="API\LyokoParser.cs" />
+    <Compile Include="Commands\Command.cs" />
+    <Compile Include="Commands\CommandListener.cs" />
+    <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Events\CommandInputEvent.cs" />
     <Compile Include="Events\CommandOutputEvent.cs" />
     <Compile Include="Events\EventArgs\StringEventArg.cs" />
@@ -77,6 +80,8 @@
     <Compile Include="Events\VirtualWorldDestructionEvent.cs" />
     <Compile Include="Events\XanaAwakenEvent.cs" />
     <Compile Include="Events\XanaDefeatEvent.cs" />
+    <Compile Include="Exceptions\CommandException.cs" />
+    <Compile Include="Exceptions\LapiException.cs" />
     <Compile Include="Plugin\ConfigManager.cs" />
     <Compile Include="Plugin\LyokoAPIPlugin.cs" />
     <Compile Include="Plugin\PluginConfig.cs" />
