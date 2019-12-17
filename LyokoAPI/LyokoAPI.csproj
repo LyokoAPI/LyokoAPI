@@ -51,6 +51,7 @@
     <Compile Include="API\LyokoParser.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\CommandListener.cs" />
+    <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Events\CommandInputEvent.cs" />
     <Compile Include="Events\CommandOutputEvent.cs" />
     <Compile Include="Events\EventArgs\StringEventArg.cs" />

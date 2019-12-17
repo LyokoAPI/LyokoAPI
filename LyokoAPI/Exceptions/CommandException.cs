@@ -7,7 +7,7 @@ namespace LyokoAPI.Exceptions
     {
         public string ErrorMessage { get; }
         public string Command { get; }
-        public CommandException(Command command, string messagge)
+        public CommandException(ICommand command, string messagge)
         {
             ErrorMessage = messagge;
             Command = command.DisplayName;
