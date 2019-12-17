@@ -11,6 +11,7 @@ namespace LyokoAPI.VirtualEntities.LyokoWarrior
         public GenericLocation Location { get; private set; }
         public Status Status { get; private set; }
         public int HP { get; private set; }
+        public bool Moving { get; private set; }
 
         internal LyokoWarrior(LyokoWarriorName warrior)
         {
@@ -112,13 +113,23 @@ namespace LyokoAPI.VirtualEntities.LyokoWarrior
 
         internal LyokoWarrior Move(ILocation<APILocation> location)
         {
+            //Since this, at least for now, only refers to moving in the real world
+            //or a place they can't get out without help,
+            //it does not require changing the Move variable
             Location = location.AsGenericLocation();
             return this;
         }
 
         internal LyokoWarrior Move(ILocation<ISector> location)
         {
+            Moving = true;
             Location = location.AsGenericLocation();
+            return this;
+        }
+
+        internal LyokoWarrior Arrive()
+        {
+            Moving = false;
             return this;
         }
 
