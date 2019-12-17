@@ -1,3 +1,4 @@
+using System.Runtime.Remoting.Channels;
 using LyokoAPI.Events;
 using LyokoAPI.Events.LWEvents;
 using LyokoAPI.Events.OVEvents;
@@ -57,10 +58,9 @@ namespace LyokoAPI.API
             //Overvehicle events
             OV_VirtEvent.Subscribe(onOV_Virt);
             OV_DevirtEvent.Subscribe(onOV_Devirt);
-            OV_RideEvent.Subscribe(onOV_Ride);
+            OV_RideEvent.Subscribe(onOV_Ride); 
             OV_GetOffEvent.Subscribe(onOV_GetOff);
             OV_HurtEvent.Subscribe(onOV_Hurt);
-
             Listening = true;
 
         }
@@ -111,7 +111,7 @@ namespace LyokoAPI.API
             //Overvehicle events
             OV_VirtEvent.Unsubscribe(onOV_Virt);
             OV_DevirtEvent.Unsubscribe(onOV_Devirt);
-            OV_RideEvent.Unsubscribe(onOV_Ride);
+            OV_RideEvent.Unsubscribe(onOV_Ride); 
             OV_GetOffEvent.Unsubscribe(onOV_GetOff);
             OV_HurtEvent.Unsubscribe(onOV_Hurt);
 
