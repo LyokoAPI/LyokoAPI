@@ -61,6 +61,10 @@ namespace LyokoAPI.API
             OV_RideEvent.Subscribe(onOV_Ride); 
             OV_GetOffEvent.Subscribe(onOV_GetOff);
             OV_HurtEvent.Subscribe(onOV_Hurt);
+
+            //Real World Events (possible rename?)
+            RTTPEvent.Subscribe(onRTTP);
+
             Listening = true;
 
         }
@@ -114,6 +118,9 @@ namespace LyokoAPI.API
             OV_RideEvent.Unsubscribe(onOV_Ride); 
             OV_GetOffEvent.Unsubscribe(onOV_GetOff);
             OV_HurtEvent.Unsubscribe(onOV_Hurt);
+
+            //Real World Events (possible rename?)
+            RTTPEvent.Unsubscribe(onRTTP);
 
 
             Listening = false;
@@ -246,6 +253,11 @@ namespace LyokoAPI.API
         }
 
         public virtual void onOV_Hurt(Overvehicle overvehicle)
+        {
+
+        }
+
+        public virtual void onRTTP()
         {
 
         }

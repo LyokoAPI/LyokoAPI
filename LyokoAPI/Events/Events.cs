@@ -64,5 +64,7 @@ namespace LyokoAPI.Events
 
         public delegate void OnVirtualWorldEvent(IVirtualWorld world);
 
+        public delegate void OnRealWorldEvent(); //Possibly useless, used to separate events from the real world and lyoko that do not require any parameters
+
     }
 }
