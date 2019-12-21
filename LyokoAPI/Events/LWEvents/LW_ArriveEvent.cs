@@ -4,13 +4,13 @@ using LyokoAPI.VirtualStructures.Interfaces;
 
 namespace LyokoAPI.Events.LWEvents
 {
-    public class LW_MoveEvent
+    public class LW_ArriveEvent
     {
         public static event Events.OnLyokoWEvent LwE;
         //todo: add real Locations
         public static void Call(LyokoWarrior warrior, ISector sector)
         {
-            warrior.Move(sector);
+            warrior.ChangeLocation(sector);
             LwE?.Invoke(warrior);
         }
         public static void Call(LyokoWarrior warrior, APISector sector)

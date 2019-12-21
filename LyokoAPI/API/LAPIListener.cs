@@ -22,7 +22,7 @@ namespace LyokoAPI.API
 
             //Lyoko Warrior Events
             LW_DeathEvent.Subscribe(onLW_Death);
-            LW_MoveEvent.Subscribe(onLW_Move);
+            LW_ArriveEvent.Subscribe(onLW_ArriveEvent);
             LW_FrontierEvent.Subscribe(onLW_Frontier);
             LW_HurtEvent.Subscribe(onLW_Hurt);
             LW_TranslationEvent.Subscribe(onLW_Trans);
@@ -61,6 +61,12 @@ namespace LyokoAPI.API
             OV_RideEvent.Subscribe(onOV_Ride); 
             OV_GetOffEvent.Subscribe(onOV_GetOff);
             OV_HurtEvent.Subscribe(onOV_Hurt);
+
+
+            //Real World Events (possible rename?)
+            RTTPEvent.Subscribe(onRTTP);
+
+
             Listening = true;
 
         }
@@ -74,7 +80,7 @@ namespace LyokoAPI.API
 
             //Lyoko Warrior Events
             LW_DeathEvent.Unsubscribe(onLW_Death);
-            LW_MoveEvent.Unsubscribe(onLW_Move);
+            LW_ArriveEvent.Unsubscribe(onLW_ArriveEvent);
             LW_FrontierEvent.Unsubscribe(onLW_Frontier);
             LW_HurtEvent.Unsubscribe(onLW_Hurt);
             LW_TranslationEvent.Unsubscribe(onLW_Trans);
@@ -115,6 +121,9 @@ namespace LyokoAPI.API
             OV_GetOffEvent.Unsubscribe(onOV_GetOff);
             OV_HurtEvent.Unsubscribe(onOV_Hurt);
 
+            //Real World Events (possible rename?)
+            RTTPEvent.Unsubscribe(onRTTP);
+
 
             Listening = false;
 
@@ -147,7 +156,7 @@ namespace LyokoAPI.API
             
         }
 
-        public virtual void onLW_Move(LyokoWarrior warrior)
+        public virtual void onLW_ArriveEvent(LyokoWarrior warrior)
         {
             
         }
@@ -246,6 +255,11 @@ namespace LyokoAPI.API
         }
 
         public virtual void onOV_Hurt(Overvehicle overvehicle)
+        {
+
+        }
+
+        public virtual void onRTTP()
         {
 
         }
