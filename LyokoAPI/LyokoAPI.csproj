@@ -59,7 +59,7 @@
     <Compile Include="Events\LWEvents\LW_DexanaficationEvent.cs" />
     <Compile Include="Events\LWEvents\LW_HealEvent.cs" />
     <Compile Include="Events\LWEvents\LW_HurtEvent.cs" />
-    <Compile Include="Events\LWEvents\LW_MoveEvent.cs" />
+    <Compile Include="Events\LWEvents\LW_ArriveEvent.cs" />
     <Compile Include="Events\LWEvents\LW_DeathEvent.cs" />
     <Compile Include="Events\LWEvents\LW_FrontierEvent.cs" />
     <Compile Include="Events\LWEvents\LW_TranslationEvent.cs" />
