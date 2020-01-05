@@ -77,6 +77,7 @@
     <Compile Include="Events\TowerDeactivationEvent.cs" />
     <Compile Include="Events\Events.cs" />
     <Compile Include="Events\TowerHijackEvent.cs" />
+    <Compile Include="Events\RTTPEvent.cs" />
     <Compile Include="Events\VirtualWorldDestructionEvent.cs" />
     <Compile Include="Events\XanaAwakenEvent.cs" />
     <Compile Include="Events\XanaDefeatEvent.cs" />

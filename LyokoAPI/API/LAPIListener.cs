@@ -22,7 +22,7 @@ namespace LyokoAPI.API
 
             //Lyoko Warrior Events
             LW_DeathEvent.Subscribe(onLW_Death);
-            LW_ArriveEvent.Subscribe(onLW_ArriveEvent);
+            LW_ArriveEvent.Subscribe(onLW_Arrive);
             LW_FrontierEvent.Subscribe(onLW_Frontier);
             LW_HurtEvent.Subscribe(onLW_Hurt);
             LW_TranslationEvent.Subscribe(onLW_Trans);
@@ -80,7 +80,7 @@ namespace LyokoAPI.API
 
             //Lyoko Warrior Events
             LW_DeathEvent.Unsubscribe(onLW_Death);
-            LW_ArriveEvent.Unsubscribe(onLW_ArriveEvent);
+            LW_ArriveEvent.Unsubscribe(onLW_Arrive);
             LW_FrontierEvent.Unsubscribe(onLW_Frontier);
             LW_HurtEvent.Unsubscribe(onLW_Hurt);
             LW_TranslationEvent.Unsubscribe(onLW_Trans);
@@ -156,7 +156,7 @@ namespace LyokoAPI.API
             
         }
 
-        public virtual void onLW_ArriveEvent(LyokoWarrior warrior)
+        public virtual void onLW_Arrive(LyokoWarrior warrior)
         {
             
         }
