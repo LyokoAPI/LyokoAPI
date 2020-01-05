@@ -1,6 +1,6 @@
 ﻿using System;
+using System.IO;
 using LyokoAPI.API;
-using LyokoAPI.Events;
 using LyokoAPI.Events.LWEvents;
 using LyokoAPI.Plugin;
 using LyokoAPI.VirtualEntities.LyokoWarrior;
@@ -16,14 +16,10 @@ namespace TestProject2
         [Test]
         public void TestNames()
         {
-            LyokoLogger.Subscribe(Console.WriteLine);
-            Info.SetConfigPath("C:\\Users\\delog\\Documents\\New folder");
-            var plugin = new DummyPlugin();
-            
+            Info.SetConfigPath(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),"LAPIDev","Plugins"));
+            var plugin = new TestPlugin();
             plugin.Enable();
             plugin.Disable();
-
-
 
         }
         

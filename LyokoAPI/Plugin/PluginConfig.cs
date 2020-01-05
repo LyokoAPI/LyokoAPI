@@ -9,7 +9,7 @@ namespace LyokoAPI.Plugin
     {
         public string FilePath { get; private set; }
         public string Name { get; private set; }
-        public Dictionary<string, string> Values;
+        public Dictionary<string, string> Values { get; private set; }
         protected internal PluginConfig(LyokoAPIPlugin plugin, string path)
         {
             if (File.Exists(path))
@@ -18,17 +18,11 @@ namespace LyokoAPI.Plugin
             }
             else
             {
-                Name = path;
-                if (!path.Contains(".yaml"))
-                {
-                    FilePath = path + ".yaml";
-                }
-                else
-                {
-                    FilePath = Name;
-                }
+                File.Create(path);
+                Name = Path.GetFileName(path).Replace(".yaml","");
+                FilePath = path;
                 Values = new Dictionary<string, string>();
-                Values.Add("config_name",path);
+                Values.Add("config_name",Name);
             }
 
         }
