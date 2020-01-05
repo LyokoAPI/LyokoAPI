@@ -10,18 +10,25 @@ namespace LyokoAPI.Plugin
         public string FilePath { get; private set; }
         public string Name { get; private set; }
         public Dictionary<string, string> Values;
-        public PluginConfig(LyokoAPIPlugin plugin, string nameOrPath)
+        protected internal PluginConfig(LyokoAPIPlugin plugin, string path)
         {
-            if (File.Exists(nameOrPath))
+            if (File.Exists(path))
             {
-                Load(plugin,nameOrPath);
+                Load(plugin,path);
             }
             else
             {
-                Name = nameOrPath;
-                FilePath = Path.Combine(plugin.ConfigManager.PluginConfigDirectory,nameOrPath+".yaml");
+                Name = path;
+                if (!path.Contains(".yaml"))
+                {
+                    FilePath = path + ".yaml";
+                }
+                else
+                {
+                    FilePath = Name;
+                }
                 Values = new Dictionary<string, string>();
-                Values.Add("config_name",nameOrPath);
+                Values.Add("config_name",path);
             }
 
         }
@@ -36,7 +43,7 @@ namespace LyokoAPI.Plugin
            var deserializer = new DeserializerBuilder().Build();
            var values = deserializer.Deserialize<Dictionary<string,string>>(input);
            Name = values["config_name"];
-           FilePath = Path.Combine(plugin.ConfigManager.PluginConfigDirectory,Name+".yaml");
+           FilePath = path;
            Values = values;
         }
 
