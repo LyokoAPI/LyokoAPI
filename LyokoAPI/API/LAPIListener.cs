@@ -62,8 +62,10 @@ namespace LyokoAPI.API
             OV_GetOffEvent.Subscribe(onOV_GetOff);
             OV_HurtEvent.Subscribe(onOV_Hurt);
 
+
             //Real World Events (possible rename?)
             RTTPEvent.Subscribe(onRTTP);
+
 
             Listening = true;
 

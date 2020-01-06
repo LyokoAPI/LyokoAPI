@@ -30,6 +30,11 @@ namespace LyokoAPI.Plugin
             _plugin = plugin;
         }
 
+        public PluginConfig CreateConfig(string name)
+        {
+            Configs.Add(new PluginConfig(_plugin, Path.Combine(PluginConfigDirectory, name + ".yaml")));
+            return GetConfig(name);
+        }
 
         
         
@@ -69,7 +74,7 @@ namespace LyokoAPI.Plugin
             if (GetConfig("main") == null)
             {
                 CreateConfigDirectory();
-                Configs.Add(new PluginConfig(_plugin, "main"));
+                CreateConfig("main");
             }
 
             return GetConfig("main");

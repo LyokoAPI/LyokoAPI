@@ -1,5 +1,8 @@
 ﻿using System;
+using System.IO;
+using LyokoAPI.API;
 using LyokoAPI.Events.LWEvents;
+using LyokoAPI.Plugin;
 using LyokoAPI.VirtualEntities.LyokoWarrior;
 using LyokoAPI.VirtualStructures;
 using LyokoAPI.VirtualStructures.Interfaces;
@@ -13,15 +16,10 @@ namespace TestProject2
         [Test]
         public void TestNames()
         {
-            var sector = new APISector("Lyoko","forest");
-            Console.WriteLine($"{sector.Name} - {sector.World.Name}");
-            APITower tower = new APITower("lyoko", "forest", 1);
-
-            tower.Activator = APIActivator.XANA;
-            ITower itower = tower;
-            
-            Assert.AreEqual(APIActivator.XANA.ToString(), $"{itower.Activator}");
-
+            Info.SetConfigPath(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),"LAPIDev","Plugins"));
+            var plugin = new TestPlugin();
+            plugin.Enable();
+            plugin.Disable();
 
         }
         
