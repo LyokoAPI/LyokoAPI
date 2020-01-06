@@ -9,7 +9,7 @@ namespace LyokoAPI.Plugin
     {
         public string FilePath { get; private set; }
         public string Name { get; private set; }
-        public Dictionary<string, string> Values { get; private set; }
+        private Dictionary<string, string> Values { get;  set; }
         protected internal PluginConfig(LyokoAPIPlugin plugin, string path)
         {
             if (File.Exists(path))
@@ -18,13 +18,46 @@ namespace LyokoAPI.Plugin
             }
             else
             {
-                File.Create(path);
+                var file = File.Create(path);
+                file.Close();
                 Name = Path.GetFileName(path).Replace(".yaml","");
                 FilePath = path;
                 Values = new Dictionary<string, string>();
                 Values.Add("config_name",Name);
             }
 
+        }
+
+        //This prevents plugins from wiping the Values variable and causing in errors
+
+        public string GetValue(string key)
+        {
+            /*if (Values.ContainsKey(key))
+                return Values[key];
+            return "";*/
+            string value;
+            Values.TryGetValue(key, out value);
+            return value;
+        }
+        
+        public void CreateValue(string key, string value)
+        {
+            if (!Values.ContainsKey(key))
+                Values[key] = value;
+            else
+            {
+                UpdateValue(key, value);
+            }
+        }
+
+        public void UpdateValue(string key, string value)
+        {
+            if (Values.ContainsKey(key))
+                Values[key] = value;
+            else
+            {
+                CreateValue(key,value);
+            }
         }
 
         private void Load(LyokoAPIPlugin plugin, string path)
@@ -34,11 +67,24 @@ namespace LyokoAPI.Plugin
                     new StringReader(path));
             */
            var input = new StringReader(File.ReadAllText(path));
-           var deserializer = new DeserializerBuilder().Build();
-           var values = deserializer.Deserialize<Dictionary<string,string>>(input);
-           Name = values["config_name"];
+           //Prevents empty files from breaking the plugin
+           if (File.ReadAllText(path).Length > 0)
+           {
+               var deserializer = new DeserializerBuilder().Build();
+               var values = deserializer.Deserialize<Dictionary<string, string>>(input);
+               Values = values;
+               //string temp;
+               //Values.TryGetValue("config_name", out temp);
+               //Name = temp;
+               Name = GetValue("config_name");
+               Console.WriteLine(Name);
+           }
+           else{
+               Values=new Dictionary<string, string>();
+               Values.Add("empty","empty");
+           }
+
            FilePath = path;
-           Values = values;
         }
 
 
@@ -47,6 +93,7 @@ namespace LyokoAPI.Plugin
         {
             var serializer = new YamlDotNet.Serialization.Serializer();
             var file = serializer.Serialize(Values);
+            Console.WriteLine(file);
             File.Delete(FilePath);
             File.WriteAllText(new FileInfo(FilePath).FullName, file);
         }

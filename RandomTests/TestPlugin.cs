@@ -9,15 +9,15 @@ namespace TestProject2
         public override string Author { get; } = "LyokoAPI";
         protected override bool OnEnable()
         {
-
-
-            if (ConfigManager.GetMainConfig().Values["something"] == "thesamething")
+            //Console.WriteLine(ConfigManager.GetMainConfig().Values.ToString());
+            ConfigManager.GetMainConfig().CreateValue("hello","hello");
+            if (ConfigManager.GetMainConfig().GetValue("something") == "thesamething")
             {
                 Console.WriteLine("ITS THE SAME THING AAAAAA");
             }
             else
             {
-                ConfigManager.GetMainConfig().Values["something"] = "somethingElse";
+                ConfigManager.GetMainConfig().UpdateValue("something","somethingElse");
             }
             return true;
         }
