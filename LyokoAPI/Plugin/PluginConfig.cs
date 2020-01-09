@@ -9,7 +9,13 @@ namespace LyokoAPI.Plugin
     {
         public string FilePath { get; private set; }
         public string Name { get; private set; }
-        private Dictionary<string, string> Values { get;  set; }
+        public Dictionary<string, string> Values { get; private  set; } = new Dictionary<string, string>();
+
+        public String this[string key]
+        {
+            get => Values.ContainsKey(key) ? Values[key] : null;
+            set => Values[key] = value;
+        }
         protected internal PluginConfig(LyokoAPIPlugin plugin, string path)
         {
             if (File.Exists(path))
@@ -20,44 +26,12 @@ namespace LyokoAPI.Plugin
             {
                 var file = File.Create(path);
                 file.Close();
-                Name = Path.GetFileName(path).Replace(".yaml","");
+                Name = Path.GetFileNameWithoutExtension(path);
                 FilePath = path;
                 Values = new Dictionary<string, string>();
                 Values.Add("config_name",Name);
             }
 
-        }
-
-        //This prevents plugins from wiping the Values variable and causing in errors
-
-        public string GetValue(string key)
-        {
-            /*if (Values.ContainsKey(key))
-                return Values[key];
-            return "";*/
-            string value;
-            Values.TryGetValue(key, out value);
-            return value;
-        }
-        
-        public void CreateValue(string key, string value)
-        {
-            if (!Values.ContainsKey(key))
-                Values[key] = value;
-            else
-            {
-                UpdateValue(key, value);
-            }
-        }
-
-        public void UpdateValue(string key, string value)
-        {
-            if (Values.ContainsKey(key))
-                Values[key] = value;
-            else
-            {
-                CreateValue(key,value);
-            }
         }
 
         private void Load(LyokoAPIPlugin plugin, string path)
@@ -76,13 +50,16 @@ namespace LyokoAPI.Plugin
                //string temp;
                //Values.TryGetValue("config_name", out temp);
                //Name = temp;
-               Name = GetValue("config_name");
-               Console.WriteLine(Name);
+               try
+               {
+                   Name = Values["config_name"];
+               }
+               catch (KeyNotFoundException e)
+               {
+                   Name= Path.GetFileNameWithoutExtension(path);
+               }
            }
-           else{
-               Values=new Dictionary<string, string>();
-               Values.Add("empty","empty");
-           }
+
 
            FilePath = path;
         }
@@ -93,7 +70,6 @@ namespace LyokoAPI.Plugin
         {
             var serializer = new YamlDotNet.Serialization.Serializer();
             var file = serializer.Serialize(Values);
-            Console.WriteLine(file);
             File.Delete(FilePath);
             File.WriteAllText(new FileInfo(FilePath).FullName, file);
         }

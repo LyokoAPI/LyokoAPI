@@ -10,14 +10,13 @@ namespace TestProject2
         protected override bool OnEnable()
         {
             //Console.WriteLine(ConfigManager.GetMainConfig().Values.ToString());
-            ConfigManager.GetMainConfig().CreateValue("hello","hello");
-            if (ConfigManager.GetMainConfig().GetValue("something") == "thesamething")
+            if (ConfigManager.GetMainConfig()["something"] == "thesamething")
             {
                 Console.WriteLine("ITS THE SAME THING AAAAAA");
             }
             else
             {
-                ConfigManager.GetMainConfig().UpdateValue("something","somethingElse");
+                ConfigManager.GetMainConfig()["something"] = "somethingelse";
             }
             return true;
         }
