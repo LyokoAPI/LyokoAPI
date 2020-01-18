@@ -24,6 +24,10 @@ namespace LyokoAPI.Plugin
                         Configs.Add(new PluginConfig(plugin,file));
                     } 
                 }
+                else
+                {
+                    CreateConfigDirectory();
+                }
                 
             }
 
@@ -71,13 +75,14 @@ namespace LyokoAPI.Plugin
             {
                 return null;
             }
-            if (GetConfig("main") == null)
+            PluginConfig config = GetConfig("main");
+            /*if (config == null)
             {
                 CreateConfigDirectory();
                 CreateConfig("main");
-            }
+            }*/
 
-            return GetConfig("main");
+            return config;
         }
 
         public PluginConfig GetConfig(string name)
@@ -86,7 +91,11 @@ namespace LyokoAPI.Plugin
             {
                 return null;
             }
-            return Configs.Find(config => config.Name.Equals(name,StringComparison.OrdinalIgnoreCase));
+
+            PluginConfig pluginConfig = Configs.Find(config => config.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+            if (pluginConfig == null)
+                pluginConfig=CreateConfig(name);
+            return pluginConfig;
         }
 
         public void SaveAllConfigs()

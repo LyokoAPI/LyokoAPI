@@ -9,7 +9,13 @@ namespace LyokoAPI.Plugin
     {
         public string FilePath { get; private set; }
         public string Name { get; private set; }
-        public Dictionary<string, string> Values { get; private set; }
+        public Dictionary<string, string> Values { get; private  set; } = new Dictionary<string, string>();
+
+        public String this[string key]
+        {
+            get => Values.ContainsKey(key) ? Values[key] : null;
+            set => Values[key] = value;
+        }
         protected internal PluginConfig(LyokoAPIPlugin plugin, string path)
         {
             if (File.Exists(path))
@@ -18,8 +24,9 @@ namespace LyokoAPI.Plugin
             }
             else
             {
-                File.Create(path);
-                Name = Path.GetFileName(path).Replace(".yaml","");
+                var file = File.Create(path);
+                file.Close();
+                Name = Path.GetFileNameWithoutExtension(path);
                 FilePath = path;
                 Values = new Dictionary<string, string>();
                 Values.Add("config_name",Name);
@@ -34,11 +41,27 @@ namespace LyokoAPI.Plugin
                     new StringReader(path));
             */
            var input = new StringReader(File.ReadAllText(path));
-           var deserializer = new DeserializerBuilder().Build();
-           var values = deserializer.Deserialize<Dictionary<string,string>>(input);
-           Name = values["config_name"];
+           //Prevents empty files from breaking the plugin
+           if (File.ReadAllText(path).Length > 0)
+           {
+               var deserializer = new DeserializerBuilder().Build();
+               var values = deserializer.Deserialize<Dictionary<string, string>>(input);
+               Values = values;
+               //string temp;
+               //Values.TryGetValue("config_name", out temp);
+               //Name = temp;
+               try
+               {
+                   Name = Values["config_name"];
+               }
+               catch (KeyNotFoundException e)
+               {
+                   Name= Path.GetFileNameWithoutExtension(path);
+               }
+           }
+
+
            FilePath = path;
-           Values = values;
         }
 
 
