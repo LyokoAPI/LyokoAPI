@@ -14,7 +14,7 @@ namespace LyokoAPI.Commands
         public virtual string DisplayName => Name;
         public virtual string Usage => GetSubCommandsAsString();
         private string[] _args;
-        public virtual List<ICommand> subCommands { get; protected set; } = new List<ICommand>();
+        public virtual List<ICommand> SubCommands { get; protected set; } = new List<ICommand>();
         public void Run(string[] args = null)
         {
             _args = args ?? new string[] { };
@@ -49,7 +49,7 @@ namespace LyokoAPI.Commands
                 args = new string[] { };
             }
 
-            foreach (var command in subCommands)
+            foreach (var command in SubCommands)
             {
                 if (command.Name.Equals(subcommand))
                 {
@@ -97,7 +97,7 @@ namespace LyokoAPI.Commands
         private string GetSubCommandsAsString()
         {
             string sub = "[";
-            foreach (var command in subCommands)
+            foreach (var command in SubCommands)
             {
                 sub += $"{this.Name}.{command.Name}, ";
             }
