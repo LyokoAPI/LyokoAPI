@@ -8,9 +8,9 @@ namespace LyokoAPI.Commands
 {
     public abstract class Command : ICommand
     {
-        public abstract string Name { get; set; }
-        public virtual int MinArgs { get; set; } = 0;
-        public virtual int MaxArgs { get; set; } = Int32.MaxValue;
+        public abstract string Name { get;}
+        public virtual int MinArgs { get; } = 0;
+        public virtual int MaxArgs { get; } = Int32.MaxValue;
         public virtual string DisplayName => Name;
         public virtual string Usage => GetSubCommandsAsString();
         private string[] _args;
