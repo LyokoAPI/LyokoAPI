@@ -12,6 +12,21 @@ namespace LyokoAPI.API
     public static class Info
     {
         private static string ConfigPath = "";
+        private static string _Appname = "Unknown";
+        public static string AppName
+        {
+            get => _Appname;
+            set
+            {
+                if (_Appname != "Unknown")
+                {
+                    throw new InvalidOperationException();
+                }
+                _Appname = value;
+            }
+        }
+
+
         public static LVersion Version()
         {
             return typeof(LVersion).Assembly.GetName().Version.ToString();
