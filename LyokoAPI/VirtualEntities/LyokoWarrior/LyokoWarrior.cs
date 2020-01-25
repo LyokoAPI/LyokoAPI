@@ -9,14 +9,14 @@ namespace LyokoAPI.VirtualEntities.LyokoWarrior
         public static readonly int MAX_HP = 100;
         public LyokoWarriorName WarriorName { get; internal set; }
         public GenericLocation Location { get; private set; }
-        public Status Status { get; private set; }
+        public LW_Status Status { get; private set; }
         public int HP { get; private set; }
 
         internal LyokoWarrior(LyokoWarriorName warrior)
         {
             WarriorName = warrior;
             Location = APILocations.KADIC;
-            Status = Status.EARTH;
+            Status = LW_Status.EARTH;
             HP = MAX_HP;
         }
 
@@ -57,21 +57,21 @@ namespace LyokoAPI.VirtualEntities.LyokoWarrior
         {
             ChangeLocation(destination);
             ResetHealth();
-            Status = Status.VIRTUALIZED;
+            Status = LW_Status.VIRTUALIZED;
             return this;
         }
 
         internal LyokoWarrior Frontier()
         {
             Location = APILocations.FRONTIER;
-            Status = Status.FRONTIERED;
+            Status = LW_Status.FRONTIERED;
             return this;
         }
 
         internal LyokoWarrior CodeEarth(ILocation<APILocation> location)
         {
             ChangeLocation(location);
-            Status = Status.EARTH;
+            Status = LW_Status.EARTH;
             ResetHealth();
             return this;
         }
@@ -84,21 +84,21 @@ namespace LyokoAPI.VirtualEntities.LyokoWarrior
         internal LyokoWarrior Kill()
         {
             Location = APILocations.DEAD;
-            Status = Status.LOST;
+            Status = LW_Status.LOST;
             HP = 0;
             return this;
         }
 
         internal LyokoWarrior Xanafy()
         {
-            Status = Status.XANAFIED;
+            Status = LW_Status.XANAFIED;
             return this;
         }
 
         internal LyokoWarrior Dexanafy()
         {
             Location = APILocations.SCANNERS;
-            Status = Status.EARTH;
+            Status = LW_Status.EARTH;
             ResetHealth();
             return this;
         }
@@ -106,7 +106,7 @@ namespace LyokoAPI.VirtualEntities.LyokoWarrior
         internal LyokoWarrior Translate(ILocation<APILocation> location)
         {
             ChangeLocation(location);
-            Status = Status.TRANSLATED;
+            Status = LW_Status.TRANSLATED;
             return this;
         }
         

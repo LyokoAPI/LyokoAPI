@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LyokoAPI.VirtualEntities.Overvehicle
 {
-    public enum Status
+    public enum OV_Status
     {
         VIRTUALIZED, DEVIRTUALIZED
     }

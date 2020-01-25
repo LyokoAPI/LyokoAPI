@@ -1,6 +1,6 @@
 namespace LyokoAPI.VirtualEntities.LyokoWarrior
 {
-    public enum Status
+    public enum LW_Status
     {
         EARTH,
         TRANSLATED,

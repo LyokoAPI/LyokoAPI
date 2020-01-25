@@ -10,18 +10,18 @@ namespace LyokoAPI.VirtualEntities.Overvehicle
         public static readonly int MAX_HP=100;
         public OvervehicleName OvervehicleName { get; internal set; }
         public GenericLocation Location { get; private set; } //Possibly irrevelant in the future
-        public Status Status { get; private set; }
+        public OV_Status Status { get; private set; }
         public int HP { get; private set; }
         public LyokoWarrior.LyokoWarrior WarriorRider { get; internal set; }
-        public LyokoWarrior.LyokoWarrior WarriorPassanger { get; internal set; }
+        public LyokoWarrior.LyokoWarrior WarriorPassenger { get; internal set; }
 
         internal Overvehicle(OvervehicleName overvehicle)
         {
             OvervehicleName = overvehicle;
             Location = APILocations.DEAD;
-            Status = Status.DEVIRTUALIZED;
+            Status = OV_Status.DEVIRTUALIZED;
             WarriorRider = null;
-            WarriorPassanger = null;
+            WarriorPassenger = null;
             HP = MAX_HP;
         }
 
@@ -62,7 +62,7 @@ namespace LyokoAPI.VirtualEntities.Overvehicle
         {
             Move(destination);
             ResetHealth();
-            Status = Status.VIRTUALIZED;
+            Status = OV_Status.VIRTUALIZED;
             return this;
         }
         
@@ -70,7 +70,7 @@ namespace LyokoAPI.VirtualEntities.Overvehicle
         {
             Location = warrior.Location;
             ResetHealth();
-            Status = Status.VIRTUALIZED;
+            Status = OV_Status.VIRTUALIZED;
             return this;
         }
 
@@ -78,8 +78,8 @@ namespace LyokoAPI.VirtualEntities.Overvehicle
         {
             Location = APILocations.DEAD;
             WarriorRider = null;
-            WarriorPassanger = null;
-            Status = Status.DEVIRTUALIZED;
+            WarriorPassenger = null;
+            Status = OV_Status.DEVIRTUALIZED;
             return this;
         }
 
@@ -87,8 +87,8 @@ namespace LyokoAPI.VirtualEntities.Overvehicle
         {
             if (WarriorRider == null)
                 WarriorRider = warrior;
-            else if (WarriorPassanger == null)
-                WarriorPassanger = warrior;
+            else if (WarriorPassenger == null)
+                WarriorPassenger = warrior;
             else
                 LyokoLogger.Log("LAPI", $"{OvervehicleName} is already fully occupied.");
             return this;
@@ -98,11 +98,11 @@ namespace LyokoAPI.VirtualEntities.Overvehicle
         {
             if (WarriorRider == warrior)
             {
-                WarriorRider = WarriorPassanger;
-                WarriorPassanger = null;
+                WarriorRider = WarriorPassenger;
+                WarriorPassenger = null;
             }
-            else if (WarriorPassanger == warrior)
-                WarriorPassanger = null;
+            else if (WarriorPassenger == warrior)
+                WarriorPassenger = null;
             else
                 LyokoLogger.Log("LAPI", $"{warrior} is not riding {OvervehicleName}.");
             return this;

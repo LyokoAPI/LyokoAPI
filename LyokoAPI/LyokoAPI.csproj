@@ -96,11 +96,11 @@
     <Compile Include="VirtualEntities\LyokoWarrior\LyokoWarrior.cs" />
     <Compile Include="VirtualEntities\LyokoWarrior\LyokoWarriorName.cs" />
     <Compile Include="VirtualEntities\LyokoWarrior\LyokoWarriors.cs" />
-    <Compile Include="VirtualEntities\LyokoWarrior\Status.cs" />
+    <Compile Include="VirtualEntities\LyokoWarrior\LW_Status.cs" />
     <Compile Include="VirtualEntities\Overvehicle\Overvehicle.cs" />
     <Compile Include="VirtualEntities\Overvehicle\OvervehicleName.cs" />
     <Compile Include="VirtualEntities\Overvehicle\Overvehicles.cs" />
-    <Compile Include="VirtualEntities\Overvehicle\Status.cs" />
+    <Compile Include="VirtualEntities\Overvehicle\OV_Status.cs" />
     <Compile Include="VirtualStructures\APIActivator.cs" />
     <Compile Include="VirtualStructures\Interfaces\ISector.cs" />
     <Compile Include="VirtualStructures\Interfaces\ITower.cs" />
