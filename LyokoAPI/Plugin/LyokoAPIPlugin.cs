@@ -17,7 +17,8 @@ namespace LyokoAPI.Plugin
         public abstract string Name { get; }
         public abstract string Author { get; }
         public bool Enabled { get; private set; }
-        public virtual LVersion Version { get; } = "0.0";
+        public virtual LVersion Version { get; } = typeof(LVersion).Assembly.GetName().Version.ToString();
+
         public virtual List<LVersion> CompatibleLAPIVersions { get;} = new List<LVersion>(){"0.0"};
         protected internal ConfigManager ConfigManager { get;  set; }
         [Obsolete("Dependencies are not supported yet")]
