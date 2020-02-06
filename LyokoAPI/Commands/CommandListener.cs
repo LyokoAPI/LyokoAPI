@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using LyokoAPI.API;
 using LyokoAPI.Events;
+using LyokoAPI.Plugin;
 
 namespace LyokoAPI.Commands
 {
@@ -16,10 +17,6 @@ namespace LyokoAPI.Commands
             return this;
         }
 
-        protected CommandListener()
-        {
-            //Commands = new List<Command>(){new Xana(), new Aelita(), new Devirtualize(), new Hurt(), new Kill(), new Virtualize(), new Heal(), new Frontier(),new Xanafy(), new Translate()};
-        }
         
         
 
@@ -67,6 +64,14 @@ namespace LyokoAPI.Commands
             {
                 CommandOutputEvent.Call(Prefix,$"Unknown command: \"{commandname}\""); 
             }
+        }
+
+        protected CommandListener(string pluginName) : base(pluginName)
+        {
+        }
+
+        protected CommandListener(LyokoAPIPlugin plugin) : base(plugin)
+        {
         }
     }
 }
