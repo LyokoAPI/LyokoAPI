@@ -26,13 +26,13 @@ namespace LyokoAPI.Events
         {
            Call(new APITower(vworld,sector,number)); 
         }
-        public static Events.OnTowerEvent Subscribe(Events.OnTowerEvent func)
+        internal static Events.OnTowerEvent Subscribe(Events.OnTowerEvent func)
         {
             TowerDeactivationE += func;
             return func;
         }
 
-        public static void Unsubscribe(Events.OnTowerEvent func)
+        internal static void Unsubscribe(Events.OnTowerEvent func)
         {
             /*for (var index = 0; index < TowerDeactivationE.GetInvocationList().Length; index++)
             {
@@ -44,12 +44,7 @@ namespace LyokoAPI.Events
             }*/
             TowerDeactivationE -= func;
         }
-        [Obsolete("Use Unsubscribe(...) instead")]
-        public static void UnSubscribe(Events.OnTowerEvent func)
-        {
-            Unsubscribe(func);
-        }
-                
+
         #region locking
         private static bool _isLocked;
         public static bool IsLocked

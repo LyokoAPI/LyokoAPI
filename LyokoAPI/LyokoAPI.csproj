@@ -54,7 +54,6 @@
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Events\CommandInputEvent.cs" />
     <Compile Include="Events\CommandOutputEvent.cs" />
-    <Compile Include="Events\EventArgs\StringEventArg.cs" />
     <Compile Include="Events\LWEvents\LW_DevirtEvent.cs" />
     <Compile Include="Events\LWEvents\LW_DexanaficationEvent.cs" />
     <Compile Include="Events\LWEvents\LW_HealEvent.cs" />
@@ -112,7 +111,9 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Events\EventArgs" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.

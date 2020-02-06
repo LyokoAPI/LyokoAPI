@@ -22,14 +22,14 @@ namespace LyokoAPI.Events.LWEvents
             Call(warrior,new APISector("Lyoko", sector));
         }
 
-        public static Events.OnLyokoWEvent Subscribe(Events.OnLyokoWEvent func)
+        internal static Events.OnLyokoWEvent Subscribe(Events.OnLyokoWEvent func)
         {
             
             LwE += func;
             return func;
         }
 
-        public static void Unsubscribe(Events.OnLyokoWEvent func)
+        internal static void Unsubscribe(Events.OnLyokoWEvent func)
         {
             LwE -= func;
         }

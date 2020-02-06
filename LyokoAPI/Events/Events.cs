@@ -1,7 +1,6 @@
 using System;
 using System.Reflection;
 using System.Runtime.Remoting.Activation;
-using LyokoAPI.Events.EventArgs;
 using LyokoAPI.VirtualEntities;
 using LyokoAPI.VirtualEntities.LyokoWarrior;
 using LyokoAPI.VirtualEntities.Overvehicle;

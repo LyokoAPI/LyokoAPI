@@ -15,13 +15,13 @@ namespace LyokoAPI.Events
             stringE?.Invoke($"[{sender}] {message}");
         }
 
-        public static Events.OnStringEvent Subscribe(Events.OnStringEvent func)
+        internal static Events.OnStringEvent Subscribe(Events.OnStringEvent func)
         {
             stringE += func;
             return func;
         }
 
-        public static void Unsubscribe(Events.OnStringEvent func)
+        internal static void Unsubscribe(Events.OnStringEvent func)
         {
             stringE -= func;
         }

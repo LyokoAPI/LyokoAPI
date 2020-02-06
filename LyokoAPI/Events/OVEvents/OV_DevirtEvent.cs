@@ -15,14 +15,14 @@ namespace LyokoAPI.Events.OVEvents
             OvE?.Invoke(overvehicle);
         }
 
-        public static Events.OnOvervehicleEvent Subscribe(Events.OnOvervehicleEvent func)
+        internal static Events.OnOvervehicleEvent Subscribe(Events.OnOvervehicleEvent func)
         {
 
             OvE += func;
             return func;
         }
 
-        public static void Unsubscribe(Events.OnOvervehicleEvent func)
+        internal static void Unsubscribe(Events.OnOvervehicleEvent func)
         {
             OvE -= func;
         }

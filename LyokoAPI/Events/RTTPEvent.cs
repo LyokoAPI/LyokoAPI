@@ -12,13 +12,13 @@ namespace LyokoAPI.Events
             rttpE?.Invoke();
         }
 
-        public static Events.OnRealWorldEvent Subscribe(Events.OnRealWorldEvent func)
+        internal static Events.OnRealWorldEvent Subscribe(Events.OnRealWorldEvent func)
         {
             rttpE += func;
             return func;
         }
 
-        public static void Unsubscribe(Events.OnRealWorldEvent func)
+        internal static void Unsubscribe(Events.OnRealWorldEvent func)
         {
             rttpE -= func;
         }

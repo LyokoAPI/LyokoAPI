@@ -27,13 +27,13 @@ namespace LyokoAPI.Events
             Call(_world);
         }
 
-        public static Events.OnVirtualWorldEvent Subscribe(Events.OnVirtualWorldEvent func)
+        internal static Events.OnVirtualWorldEvent Subscribe(Events.OnVirtualWorldEvent func)
         {
             VirtualWorldE += func;
             return func;
         }
 
-        public static void Unsubscribe(Events.OnVirtualWorldEvent func)
+        internal static void Unsubscribe(Events.OnVirtualWorldEvent func)
         {
             VirtualWorldE -= func;
         }

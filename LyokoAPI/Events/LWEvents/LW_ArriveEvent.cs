@@ -31,14 +31,14 @@ namespace LyokoAPI.Events.LWEvents
             warrior.ChangeLocation(location);
             LwE?.Invoke(warrior);
         }
-        public static Events.OnLyokoWEvent Subscribe(Events.OnLyokoWEvent func)
+        internal static Events.OnLyokoWEvent Subscribe(Events.OnLyokoWEvent func)
         {
             
             LwE += func;
             return func;
         }
 
-        public static void Unsubscribe(Events.OnLyokoWEvent func)
+        internal static void Unsubscribe(Events.OnLyokoWEvent func)
         {
             LwE -= func;
         }

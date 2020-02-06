@@ -18,13 +18,13 @@ namespace LyokoAPI.Events
             
         }
 
-        public static Events.OnLyokoEvent Subscribe(Events.OnLyokoEvent func)
+        internal static Events.OnLyokoEvent Subscribe(Events.OnLyokoEvent func)
         {
             XanaAwakenE += func;
             return func;
         }
 
-        public static void Unsubscribe(Events.OnLyokoEvent func)
+        internal static void Unsubscribe(Events.OnLyokoEvent func)
         {
             XanaAwakenE -= func;
         }

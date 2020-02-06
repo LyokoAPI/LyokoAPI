@@ -30,13 +30,13 @@ namespace LyokoAPI.Events
             }
         }
         
-        public static Events.OnActivatorSwitch Subscribe(Events.OnActivatorSwitch func)
+        internal static Events.OnActivatorSwitch Subscribe(Events.OnActivatorSwitch func)
         {
             TowerHijackE += func;
             return func;
         }
 
-        public static void Unsubscribe(Events.OnActivatorSwitch func)
+        internal static void Unsubscribe(Events.OnActivatorSwitch func)
         {
             TowerHijackE -= func;
         }

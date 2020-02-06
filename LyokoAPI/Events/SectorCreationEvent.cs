@@ -37,13 +37,13 @@ namespace LyokoAPI.Events
             Call(_sector);
         }
 
-        public static Events.OnSectorEvent Subscribe(Events.OnSectorEvent func)
+        internal static Events.OnSectorEvent Subscribe(Events.OnSectorEvent func)
         {
             SectorE += func;
             return func;
         }
 
-        public static void Unsubscribe(Events.OnSectorEvent func)
+        internal static void Unsubscribe(Events.OnSectorEvent func)
         {
             SectorE -= func;
         }
