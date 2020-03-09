@@ -11,6 +11,7 @@ namespace LyokoAPI.Events.LWEvents
         public static event Events.OnLyokoWEvent LwE;
         
         public static void Call(LyokoWarrior warrior){
+            warrior.CodeEarth();
             LwE?.Invoke(warrior);
         }
 
