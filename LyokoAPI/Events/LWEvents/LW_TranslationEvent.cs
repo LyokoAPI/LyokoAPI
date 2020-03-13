@@ -10,7 +10,7 @@ namespace LyokoAPI.Events.LWEvents
         
         public static void Call(LyokoWarrior warrior, ILocation<APILocation> location)
         {
-            warrior.ChangeLocation(location);
+            warrior.Translate(location);
             LwE?.Invoke(warrior);
         }
       

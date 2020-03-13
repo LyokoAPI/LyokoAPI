@@ -1,5 +1,5 @@
 using LyokoAPI.VirtualEntities.LyokoWarrior;
-
+using System;
 namespace LyokoAPI.Events.LWEvents
 {
     public class LW_HurtEvent
@@ -8,6 +8,11 @@ namespace LyokoAPI.Events.LWEvents
         
         public static void Call(LyokoWarrior warrior, int damage)
         {
+            if(damage < 0)
+            {
+                LW_HurtEvent.Call(warrior,Math.Abs(damage));
+                return;
+            }
             warrior.Hurt(damage);
             LwE?.Invoke(warrior);
         }

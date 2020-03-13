@@ -36,6 +36,10 @@ namespace LyokoAPI.VirtualEntities.LyokoWarrior
         
         internal int Heal(int ammount)
         {
+            if(ammount < 0)
+            {
+                Hurt(ammount);
+            }
             if ((HP + ammount) > MAX_HP)
             {
                 HP = MAX_HP;
@@ -97,9 +101,11 @@ namespace LyokoAPI.VirtualEntities.LyokoWarrior
 
         internal LyokoWarrior Dexanafy()
         {
-            Location = APILocations.SCANNERS;
-            Status = LW_Status.EARTH;
-            ResetHealth();
+            if(Status != LW_Status.XANAFIED)
+            {
+                return this;
+            }
+            Status = LW_Status.VIRTUALIZED;
             return this;
         }
 
