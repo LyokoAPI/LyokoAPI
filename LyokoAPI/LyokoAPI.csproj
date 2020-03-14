@@ -52,8 +52,13 @@
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\CommandListener.cs" />
     <Compile Include="Commands\ICommand.cs" />
-    <Compile Include="Events\CommandInputEvent.cs" />
-    <Compile Include="Events\CommandOutputEvent.cs" />
+    <Compile Include="Events\AnnexEvents\TowerActivationEvent.cs" />
+    <Compile Include="Events\AnnexEvents\TowerDeactivationEvent.cs" />
+    <Compile Include="Events\AnnexEvents\TowerHijackEvent.cs" />
+    <Compile Include="Events\AnnexEvents\XanaAwakenEvent.cs" />
+    <Compile Include="Events\AnnexEvents\XanaDefeatEvent.cs" />
+    <Compile Include="Events\CommandEvents\CommandInputEvent.cs" />
+    <Compile Include="Events\CommandEvents\CommandOutputEvent.cs" />
     <Compile Include="Events\LWEvents\LW_DevirtEvent.cs" />
     <Compile Include="Events\LWEvents\LW_DexanaficationEvent.cs" />
     <Compile Include="Events\LWEvents\LW_HealEvent.cs" />
@@ -70,16 +75,11 @@
     <Compile Include="Events\OVEvents\OV_HurtEvent.cs" />
     <Compile Include="Events\OVEvents\OV_RideEvent.cs" />
     <Compile Include="Events\OVEvents\OV_VirtEvent.cs" />
-    <Compile Include="Events\SectorCreationEvent.cs" />
-    <Compile Include="Events\SectorDestructionEvent.cs" />
-    <Compile Include="Events\TowerActivationEvent.cs" />
-    <Compile Include="Events\TowerDeactivationEvent.cs" />
     <Compile Include="Events\Events.cs" />
-    <Compile Include="Events\TowerHijackEvent.cs" />
     <Compile Include="Events\RTTPEvent.cs" />
-    <Compile Include="Events\VirtualWorldDestructionEvent.cs" />
-    <Compile Include="Events\XanaAwakenEvent.cs" />
-    <Compile Include="Events\XanaDefeatEvent.cs" />
+    <Compile Include="Events\VirtualStructureEvents\SectorCreationEvent.cs" />
+    <Compile Include="Events\VirtualStructureEvents\SectorDestructionEvent.cs" />
+    <Compile Include="Events\VirtualStructureEvents\VirtualWorldDestructionEvent.cs" />
     <Compile Include="Exceptions\CommandException.cs" />
     <Compile Include="Exceptions\LapiException.cs" />
     <Compile Include="Plugin\ConfigManager.cs" />
@@ -110,9 +110,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Events\EventArgs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
