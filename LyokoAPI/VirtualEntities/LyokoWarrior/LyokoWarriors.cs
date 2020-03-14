@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using LyokoAPI.Events;
+using LyokoAPI.Events.LWEvents;
 
 namespace LyokoAPI.VirtualEntities.LyokoWarrior
 {
@@ -46,5 +47,26 @@ namespace LyokoAPI.VirtualEntities.LyokoWarrior
         {
             return _warriors.AsReadOnly();
         }
+
+        internal static void ResetAll(IEnumerable<LyokoWarrior> warriors)
+        {
+            foreach (var lyokoWarrior in warriors)
+            {
+                LW_DevirtEvent.Call(lyokoWarrior);
+            }
+        }
+
+        internal static void ResetAll(bool realistic = true)
+        {
+            if (realistic)
+            {
+                ResetAll(GetAll().Where(warrior => warrior.Status != LW_Status.PERMXANAFIED || warrior.Status != LW_Status.LOST || warrior.Status !=LW_Status.FRONTIERED));
+            }
+            else
+            {
+                ResetAll(GetAll());
+            }
+        }
+        
     }
 }
