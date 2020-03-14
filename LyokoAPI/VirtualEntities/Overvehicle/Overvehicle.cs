@@ -1,4 +1,6 @@
-﻿using LyokoAPI.RealWorld.Location;
+﻿using System;
+using LyokoAPI.API;
+using LyokoAPI.RealWorld.Location;
 using LyokoAPI.RealWorld.Location.Abstract;
 using LyokoAPI.VirtualStructures.Interfaces;
 using LyokoAPI.Events;
@@ -15,6 +17,7 @@ namespace LyokoAPI.VirtualEntities.Overvehicle
         public LyokoWarrior.LyokoWarrior WarriorRider { get; internal set; }
         public LyokoWarrior.LyokoWarrior WarriorPassenger { get; internal set; }
 
+        private OVListener Listener;
         internal Overvehicle(OvervehicleName overvehicle)
         {
             OvervehicleName = overvehicle;
@@ -23,10 +26,16 @@ namespace LyokoAPI.VirtualEntities.Overvehicle
             WarriorRider = null;
             WarriorPassenger = null;
             HP = MAX_HP;
+            Listener = new OVListener(this);
+            Listener.StartListening();
         }
 
         internal int Hurt(int damage)
         {
+            if (damage < 0)
+            {
+                Heal(Math.Abs(damage));
+            }
             if ((HP - damage) < 0)
             {
                 HP -= 0;
@@ -39,15 +48,19 @@ namespace LyokoAPI.VirtualEntities.Overvehicle
             return HP;
         }
 
-        internal int Heal(int ammount)
+        internal int Heal(int amount)
         {
-            if ((HP + ammount) > MAX_HP)
+            if (amount < 0)
+            {
+               Hurt(Math.Abs(amount));
+            }
+            if ((HP + amount) > MAX_HP)
             {
                 HP = MAX_HP;
             }
             else
             {
-                HP += ammount;
+                HP += amount;
             }
 
             return HP;
@@ -118,6 +131,24 @@ namespace LyokoAPI.VirtualEntities.Overvehicle
         {
             Location = location.AsGenericLocation();
             return this;
+        }
+
+        private class OVListener : LAPIListener
+        {
+            private Overvehicle Overvehicle { get; }
+
+            public OVListener(Overvehicle overvehicle)
+            {
+                Overvehicle = overvehicle;
+            }
+
+            public override void onLW_Devirt(LyokoWarrior.LyokoWarrior warrior)
+            {
+                if (Overvehicle.WarriorPassenger == warrior || Overvehicle.WarriorRider == warrior)
+                {
+                    Overvehicle.GetOff(warrior);
+                }
+            }
         }
     }
 }

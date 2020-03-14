@@ -11,6 +11,11 @@ namespace LyokoAPI.Events.OVEvents
 
         public static void Call(Overvehicle overvehicle, int damage)
         {
+            if (damage < 0)
+            {
+                LyokoLogger.Log("LAPI","App attempted to deal negative damage to OV");
+                return;
+            }
             overvehicle.Hurt(damage);
             OvE?.Invoke(overvehicle);
         }
