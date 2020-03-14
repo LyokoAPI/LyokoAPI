@@ -133,6 +133,11 @@ namespace LyokoAPI.VirtualEntities.Overvehicle
             return this;
         }
 
+        public bool IsRiding(LyokoWarrior.LyokoWarrior warrior)
+        {
+            return WarriorPassenger == warrior || WarriorRider == warrior;
+        }
+
         private class OVListener : LAPIListener
         {
             private Overvehicle Overvehicle { get; }
@@ -144,7 +149,7 @@ namespace LyokoAPI.VirtualEntities.Overvehicle
 
             public override void onLW_Devirt(LyokoWarrior.LyokoWarrior warrior)
             {
-                if (Overvehicle.WarriorPassenger == warrior || Overvehicle.WarriorRider == warrior)
+                if (Overvehicle.IsRiding(warrior))
                 {
                     Overvehicle.GetOff(warrior);
                 }

@@ -42,5 +42,21 @@ namespace LyokoAPI.VirtualEntities.Overvehicle
         {
             return _overvehicles.AsReadOnly();
         }
+
+        public static Overvehicle GetByWarrior(LyokoWarrior.LyokoWarrior warrior)
+        {
+            Overvehicle vehicle = GetAll().SingleOrDefault(v => v.IsRiding(warrior));
+            return vehicle;
+        }
+
+        public static Overvehicle GetVehicle(this LyokoWarrior.LyokoWarrior warrior)
+        {
+            return GetByWarrior(warrior);
+        }
+
+        public static bool IsRidingVehicle(this LyokoWarrior.LyokoWarrior warrior)
+        {
+            return warrior.GetVehicle() == null;
+        }
     }
 }
