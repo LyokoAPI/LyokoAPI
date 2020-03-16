@@ -9,6 +9,7 @@ namespace LyokoAPI.VirtualEntities.LyokoWarrior
         PERMXANAFIED,
         FRONTIERED,
         LOST,
-        
+        DNACORRUPTED,
+        NOEARTHCODE
     }
 }

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using LyokoAPI.RealWorld.Location;
 using LyokoAPI.RealWorld.Location.Abstract;
 using LyokoAPI.VirtualStructures.Interfaces;
@@ -9,14 +11,18 @@ namespace LyokoAPI.VirtualEntities.LyokoWarrior
         public static readonly int MAX_HP = 100;
         public LyokoWarriorName WarriorName { get; internal set; }
         public GenericLocation Location { get; private set; }
-        public LW_Status Status { get; private set; }
+        private List<LW_Status> _statuses = new List<LW_Status>();
+        public IReadOnlyList<LW_Status> Statuses {  get; private set; }
         public int HP { get; private set; }
+
+        public bool CantDevirt => _cantDevirt();
 
         internal LyokoWarrior(LyokoWarriorName warrior)
         {
+            Statuses = _statuses.AsReadOnly();
             WarriorName = warrior;
             Location = APILocations.KADIC;
-            Status = LW_Status.EARTH;
+            AddUniqueStatus(LW_Status.EARTH);
             HP = MAX_HP;
         }
 
@@ -61,21 +67,23 @@ namespace LyokoAPI.VirtualEntities.LyokoWarrior
         {
             ChangeLocation(destination);
             ResetHealth();
-            Status = LW_Status.VIRTUALIZED;
+            _statuses.Remove(LW_Status.EARTH);
+            AddUniqueStatus(LW_Status.VIRTUALIZED);
             return this;
         }
 
         internal LyokoWarrior Frontier()
         {
             Location = APILocations.FRONTIER;
-            Status = LW_Status.FRONTIERED;
+            AddUniqueStatus(LW_Status.FRONTIERED);
+            Dexanafy();
             return this;
         }
 
         internal LyokoWarrior CodeEarth(ILocation<APILocation> location)
         {
             ChangeLocation(location);
-            Status = LW_Status.EARTH;
+            ResetStatus();
             ResetHealth();
             return this;
         }
@@ -88,34 +96,44 @@ namespace LyokoAPI.VirtualEntities.LyokoWarrior
         internal LyokoWarrior Kill()
         {
             Location = APILocations.DEAD;
-            Status = LW_Status.LOST;
+            ResetStatus(LW_Status.LOST);
             HP = 0;
             return this;
         }
 
         internal LyokoWarrior Xanafy()
         {
-            Status = LW_Status.XANAFIED;
+            AddUniqueStatus(LW_Status.XANAFIED);
             return this;
         }
 
         internal LyokoWarrior Dexanafy()
         {
-            if(Status != LW_Status.XANAFIED)
-            {
-                return this;
-            }
-            Status = LW_Status.VIRTUALIZED;
+            _statuses.RemoveAll(status => status == LW_Status.XANAFIED || status == LW_Status.PERMXANAFIED);
             return this;
         }
+
+        internal LyokoWarrior PermXanafy()
+        {
+            _statuses.Remove(LW_Status.XANAFIED);
+            AddUniqueStatus(LW_Status.PERMXANAFIED);
+            return this;
+        }
+        
 
         internal LyokoWarrior Translate(ILocation<APILocation> location)
         {
             ChangeLocation(location);
-            Status = LW_Status.TRANSLATED;
+            AddUniqueStatus(LW_Status.TRANSLATED);
             return this;
         }
-        
+
+        internal LyokoWarrior DeTranslate(ILocation<ISector> location)
+        {
+            ChangeLocation(location);
+            _statuses.Remove(LW_Status.TRANSLATED);
+            return this;
+        }
         internal LyokoWarrior ChangeLocation(ILocation<APILocation> location)
         {
             Location = location.AsGenericLocation();
@@ -128,5 +146,48 @@ namespace LyokoAPI.VirtualEntities.LyokoWarrior
             return this;
         }
 
+        public void RemoveEarthCode()
+        {
+            AddUniqueStatus(LW_Status.NOEARTHCODE);
+        }
+
+        internal void GiveEarthCode()
+        {
+            _statuses.Remove(LW_Status.NOEARTHCODE);
+        }
+
+        internal void CorruptDNA()
+        {
+            AddUniqueStatus(LW_Status.DNACORRUPTED);
+        }
+
+        internal void FixDNA()
+        {
+            _statuses.Remove(LW_Status.DNACORRUPTED);
+        }
+
+
+        private bool AddUniqueStatus(LW_Status status)
+        {
+            if (_statuses.Contains(status))
+            {
+                return false;
+            }
+
+            _statuses.Add(status);
+            return true;
+        }
+
+        private void ResetStatus(LW_Status status = LW_Status.EARTH)
+        {
+            _statuses.Clear();
+            AddUniqueStatus(status);
+        }
+
+        private bool _cantDevirt()
+        {
+            return _statuses.Contains(LW_Status.XANAFIED) || _statuses.Contains(LW_Status.PERMXANAFIED) ||
+                _statuses.Contains(LW_Status.LOST) || _statuses.Contains(LW_Status.NOEARTHCODE) || _statuses.Contains(LW_Status.DNACORRUPTED) || _statuses.Contains(LW_Status.FRONTIERED) ;
+        }
     }
 }

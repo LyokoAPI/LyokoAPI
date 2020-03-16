@@ -60,7 +60,7 @@ namespace LyokoAPI.VirtualEntities.LyokoWarrior
         {
             if (realistic)
             {
-                ResetAll(GetAll().Where(warrior => warrior.Status != LW_Status.PERMXANAFIED || warrior.Status != LW_Status.LOST || warrior.Status !=LW_Status.FRONTIERED));
+                ResetAll(GetAll().Where(warrior => warrior.CantDevirt));
             }
             else
             {
