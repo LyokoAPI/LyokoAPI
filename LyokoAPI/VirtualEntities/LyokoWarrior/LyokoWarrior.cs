@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using LyokoAPI.Events.LWEvents;
 using LyokoAPI.RealWorld.Location;
 using LyokoAPI.RealWorld.Location.Abstract;
 using LyokoAPI.VirtualStructures.Interfaces;
@@ -16,6 +17,8 @@ namespace LyokoAPI.VirtualEntities.LyokoWarrior
         public int HP { get; private set; }
 
         public bool CantDevirt => _cantDevirt();
+
+        public bool Xanafied => Statuses.Contains(LW_Status.XANAFIED) || Statuses.Contains(LW_Status.PERMXANAFIED);
 
         internal LyokoWarrior(LyokoWarriorName warrior)
         {
@@ -76,7 +79,10 @@ namespace LyokoAPI.VirtualEntities.LyokoWarrior
         {
             Location = APILocations.FRONTIER;
             AddUniqueStatus(LW_Status.FRONTIERED);
-            Dexanafy();
+            if(Xanafied)
+            {
+                LW_DexanaficationEvent.Call(this);
+            }
             return this;
         }
 
