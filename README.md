@@ -12,3 +12,6 @@ You can redistrubte, modify and use it however you like as long as:
   + You do not make any profit of the source, or its deriviatives
 
 We do appreciate pull requests, although we may implement your suggest feature/enhancement in our own way instead.
+
+# Credits
+LyokoAPI Logo : AdminProductions
