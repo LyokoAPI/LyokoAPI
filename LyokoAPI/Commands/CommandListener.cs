@@ -43,7 +43,7 @@ namespace LyokoAPI.Commands
             var commandname = commandargs[1]; //The 0th element is the prefix, so the first is the command
             if (commandargs.Length > 2)
             {
-                commandargs = commandargs.ToList().GetRange(2, commandargs.Length - 1).ToArray();
+                commandargs = commandargs.Skip(2).ToArray();
             }
             else if (commandargs.Length == 1)
             {
