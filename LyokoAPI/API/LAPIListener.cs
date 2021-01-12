@@ -32,6 +32,10 @@ namespace LyokoAPI.API
             LW_XanaficationEvent.Subscribe(onLW_Xanafication);
             LW_DexanaficationEvent.Subscribe(onLW_Dexanafication);
             LW_PermXanafyEvent.Subscribe(onLW_PermXanafy);
+            LW_DeTranslationEvent.Subscribe(onLW_Detrans);
+            LW_CodeEarthResolvedEvent.Subscribe(onLW_CodeEarthResolved);
+            LW_DNACorruptionEvent.Subscribe(onLW_DNACorruption);
+            LW_FixedDNAEvent.Subscribe(onLW_FixedDNA);
 
             //Tower Events
             TowerActivationEvent.Subscribe(onTowerActivation);
@@ -91,6 +95,10 @@ namespace LyokoAPI.API
             LW_XanaficationEvent.Unsubscribe(onLW_Xanafication);
             LW_DexanaficationEvent.Unsubscribe(onLW_Dexanafication);
             LW_PermXanafyEvent.Unsubscribe(onLW_PermXanafy);
+            LW_DeTranslationEvent.Unsubscribe(onLW_Detrans);
+            LW_CodeEarthResolvedEvent.Unsubscribe(onLW_CodeEarthResolved);
+            LW_DNACorruptionEvent.Unsubscribe(onLW_DNACorruption);
+            LW_FixedDNAEvent.Unsubscribe(onLW_FixedDNA);
 
             //Tower Events
             TowerActivationEvent.Unsubscribe(onTowerActivation);
@@ -168,6 +176,11 @@ namespace LyokoAPI.API
             
         }
 
+        public virtual void onLW_Detrans(LyokoWarrior warrior)
+        {
+
+        }
+
         public virtual void onLW_Virt(LyokoWarrior warrior)
         {
 
@@ -179,6 +192,21 @@ namespace LyokoAPI.API
 
         public virtual void onLW_Dexanafication(LyokoWarrior warrior)
         {
+        }
+
+        public virtual void onLW_CodeEarthResolved(LyokoWarrior warrior)
+        {
+
+        }
+
+        public virtual void onLW_DNACorruption(LyokoWarrior warrior)
+        {
+
+        }
+
+        public virtual void onLW_FixedDNA(LyokoWarrior warrior)
+        {
+
         }
 
         public virtual void onTowerActivation(ITower tower)
