@@ -40,7 +40,6 @@ namespace LyokoAPI.Commands
             }
 
             string[] commandargs = arg.Split('.');
-            var commandname = commandargs[1]; //The 0th element is the prefix, so the first is the command
             if (commandargs.Length > 2)
             {
                 commandargs = commandargs.Skip(2).ToArray();
@@ -53,11 +52,13 @@ namespace LyokoAPI.Commands
                     Commands.ForEach(c => { CommandNames.Add(c.Name); });
                     CommandOutputEvent.Call(Prefix, $"Commands: {String.Join(",", CommandNames)}");
                 }
+                return;
             }
             else
             {
                 commandargs = new string[] { };
             }
+            var commandname = commandargs[1]; //The 0th element is the prefix, so the first is the command
             var command = Commands?.Find(commandd => commandd.Name.Equals(commandname));
             if (command != null)
             {
