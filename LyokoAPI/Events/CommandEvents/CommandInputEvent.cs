@@ -1,33 +1,44 @@
+using System;
 using System.Reflection;
-using LyokoAPI.VirtualStructures;
-using LyokoAPI.VirtualStructures.Interfaces;
 
 namespace LyokoAPI.Events
 {
-    public class XanaAwakenEvent
+    public class CommandInputEvent
     {
-        private static event Events.OnLyokoEvent XanaAwakenE;
-        
-        public static void Call()
+        private static event Events.OnStringEvent stringE;
+
+        public static void Call(string command)
         {
             if (IsLocked && !Assembly.GetCallingAssembly().Equals(Events.Master))
             {
                 return;
             }
-            XanaAwakenE?.Invoke();
+
+            string finalcommand = command.ToLower();
+            if (command.StartsWith("api."))
+            {
+                finalcommand = command.Substring(4);
+            }
             
+            stringE?.Invoke(String.Copy(finalcommand));
         }
 
-        public static Events.OnLyokoEvent Subscribe(Events.OnLyokoEvent func)
+        internal static Events.OnStringEvent Subscribe(Events.OnStringEvent func)
         {
-            XanaAwakenE += func;
+            stringE += func;
             return func;
         }
 
-        public static void Unsubscribe(Events.OnLyokoEvent func)
+        internal static void Unsubscribe(Events.OnStringEvent func)
         {
-            XanaAwakenE -= func;
+            stringE -= func;
         }
+        
+        
+        
+        
+        
+        
         
         #region locking
         private static bool _isLocked;
@@ -45,7 +56,6 @@ namespace LyokoAPI.Events
             {
                 return false;
             }
-
             IsLocked = true;
             return IsLocked;
         }

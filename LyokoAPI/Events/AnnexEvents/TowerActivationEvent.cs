@@ -1,46 +1,61 @@
-using System.Data.Odbc;
+using System;
 using System.Reflection;
+using LyokoAPI.API;
 using LyokoAPI.VirtualStructures;
 using LyokoAPI.VirtualStructures.Interfaces;
 
 namespace LyokoAPI.Events
 {
-    public class TowerHijackEvent
+    public class TowerActivationEvent
     {
-        private static event Events.OnActivatorSwitch TowerHijackE;
 
+        private static event Events.OnTowerEvent TowerActivationE;
+        
 
-        public static void Call(ITower tower, APIActivator old, APIActivator newactivator)
+        public static void Call(ITower tower)
         {
             if ((IsLocked && !Assembly.GetCallingAssembly().Equals(Events.Master)))
             {
                 return;
             }
-
-            if (old.Equals(APIActivator.NONE))
+            if (tower.Activated)
             {
-                TowerActivationEvent.Call(new APITower(tower.Sector.World.Name,tower.Sector.Name,tower.Number),newactivator);
-            } else if (newactivator.Equals(APIActivator.NONE))
-            {
-                TowerDeactivationEvent.Call(new APITower(tower.Sector.World.Name,tower.Sector.Name,tower.Number));
-            }
-            else
-            {
-                TowerHijackE?.Invoke(tower,old,newactivator);
+                TowerActivationE?.Invoke(tower);
             }
         }
-        
-        public static Events.OnActivatorSwitch Subscribe(Events.OnActivatorSwitch func)
+
+        public static void Call(APITower tower, APIActivator activator)
         {
-            TowerHijackE += func;
+            if ((IsLocked && !Assembly.GetCallingAssembly().Equals(Events.Master)))
+            {
+                return;
+            }
+            tower.Activator = activator;
+            Call(tower);
+        }
+
+        public static void Call(string vworld, string sector, int number, string activator)
+        {
+            if ((IsLocked && !Assembly.GetCallingAssembly().Equals(Events.Master)))
+            {
+                return;
+            }
+            APITower tower = new APITower(vworld,sector,number);
+            tower.Activator = LyokoParser.ParseActivator(activator);
+            Call(tower);
+        }
+
+        internal static Events.OnTowerEvent Subscribe(Events.OnTowerEvent func)
+        {
+            TowerActivationE += func;
             return func;
         }
 
-        public static void Unsubscribe(Events.OnActivatorSwitch func)
+        internal static void Unsubscribe(Events.OnTowerEvent func)
         {
-            TowerHijackE -= func;
+           TowerActivationE -= func;
         }
-        
+
         #region locking
         private static bool _isLocked;
         public static bool IsLocked

@@ -1,15 +1,28 @@
 using System;
+using System.Collections.Generic;
+using System.Reflection;
+using LyokoAPI.API;
+using LyokoAPI.API.Compatibility;
 using LyokoAPI.Events;
 
 namespace LyokoAPI.Plugin
 {
     public abstract class LyokoAPIPlugin
     {
+        public LyokoAPIPlugin()
+        {
+            ConfigManager = new ConfigManager(this);
+        }
+
         public abstract string Name { get; }
         public abstract string Author { get; }
         public bool Enabled { get; private set; }
+        public virtual LVersion Version { get; } = typeof(LVersion).Assembly.GetName().Version.ToString();
 
-    
+        public virtual List<LVersion> CompatibleLAPIVersions { get;} = new List<LVersion>(){"0.0"};
+        protected internal ConfigManager ConfigManager { get;  set; }
+        [Obsolete("Dependencies are not supported yet")]
+        public virtual List<Dependency> Dependencies { get; } = new List<Dependency>(){};
         protected abstract bool OnEnable();
         protected abstract bool OnDisable();
 
@@ -31,7 +44,7 @@ namespace LyokoAPI.Plugin
             }
             catch (Exception e)
             {
-                LyokoLogger.Log("LyokoAPIPlugin",$"{ToString()} threw an exception while enabling: {e.GetType()} {e.StackTrace}");
+                LyokoLogger.Log("LyokoAPIPlugin",$"{ToString()} threw an exception while enabling: {e.ToString() + (e.Message)}");
                 Disable();
             }
 
@@ -55,7 +68,7 @@ namespace LyokoAPI.Plugin
             }
             catch (Exception e)
             {
-                LyokoLogger.Log("LyokoAPIPlugin",$"{ToString()} threw an exception while disabling: {e.GetType()} {e.StackTrace}");
+                LyokoLogger.Log("LyokoAPIPlugin",$"{ToString()} threw an exception while disabling: {e.GetType()} {e.StackTrace + (e.Message)}");
             }
             
 
@@ -65,10 +78,13 @@ namespace LyokoAPI.Plugin
 
         public override string ToString()
         {
-            return $"The plugin {Name} by {Author}";
+            return $"The plugin {Name} by {Author} (V {Version})";
         }
 
         public abstract void OnGameStart(bool storyMode);
         public abstract void OnGameEnd(bool failed);
+
+        public abstract void OnInterfaceExit();
+        public abstract void OnInterfaceEnter();
     }
 }

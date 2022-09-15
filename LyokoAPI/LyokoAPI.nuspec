@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>LyokoAPI</id>
+    <version>2.0</version>
+    <title>LyokoAPI</title>
+    <summary>A library for Lyoko-themed applications</summary>
+    <authors>GoodOldJack12</authors>
+    <owners>GoodOldJack12</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="file">LICENSE.txt</license>
+    <projectUrl>https://github.com/LyokoAPI/</projectUrl>
+    <icon>images\icon.png</icon>
+    <description>A library for Lyoko-themed applications</description>
+    <releaseNotes>Full 2.0 release</releaseNotes>
+    <copyright>GoodOldJack12</copyright>
+    <dependencies>
+      <dependency id="YamlDotNet" version="6.1.1" />
+    </dependencies>
+    <repository type="git" url="https://github.com/LyokoAPI/LyokoAPI.git"/>
+  </metadata>
+  <files>
+    <file src="bin\Release\LyokoAPI.dll" target="lib" />
+    <file src=".\icon.png" target="images\" />
+    <file src="..\LICENSE.txt" target="" />
+  </files>
+</package>

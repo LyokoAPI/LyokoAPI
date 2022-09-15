@@ -1,6 +1,9 @@
 using System;
 using System.Reflection;
 using System.Runtime.Remoting.Activation;
+using LyokoAPI.VirtualEntities;
+using LyokoAPI.VirtualEntities.LyokoWarrior;
+using LyokoAPI.VirtualEntities.Overvehicle;
 using LyokoAPI.VirtualStructures;
 using LyokoAPI.VirtualStructures.Interfaces;
 
@@ -46,10 +49,21 @@ namespace LyokoAPI.Events
         public delegate void OnLyokoEvent();
         public delegate void OnActivatorSwitch(ITower tower, APIActivator old,APIActivator newactivator);
         
-        public delegate void OnLogEvent(string message);//Should properly deprecate this
+        public delegate void OnLogEvent(string arg);//Should properly deprecate this
 
-        public delegate void OnStringEvent(string message);
+        public delegate void OnStringEvent(string arg);
 
+        public delegate void OnLyokoWEvent(LyokoWarrior warriorName);
+
+        public delegate void OnOvervehicleEvent(Overvehicle overvehicleName);
+
+        public delegate void OnOvervehicleRideEvent(Overvehicle overvehicleName, LyokoWarrior warriorName);
+
+        public delegate void OnSectorEvent(ISector sector);
+
+        public delegate void OnVirtualWorldEvent(IVirtualWorld world);
+
+        public delegate void OnRealWorldEvent(); //Possibly useless, used to separate events from the real world and lyoko that do not require any parameters
 
     }
 }

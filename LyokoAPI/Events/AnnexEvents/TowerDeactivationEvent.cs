@@ -1,16 +1,14 @@
 using System;
 using System.Reflection;
-using LyokoAPI.API;
 using LyokoAPI.VirtualStructures;
 using LyokoAPI.VirtualStructures.Interfaces;
 
 namespace LyokoAPI.Events
 {
-    public class TowerActivationEvent
+    public class TowerDeactivationEvent
     {
 
-        private static event Events.OnTowerEvent TowerActivationE;
-        
+        private static event Events.OnTowerEvent TowerDeactivationE;
 
         public static void Call(ITower tower)
         {
@@ -18,50 +16,35 @@ namespace LyokoAPI.Events
             {
                 return;
             }
-            if (tower.Activated)
+            if (!tower.Activated)
             {
-                TowerActivationE?.Invoke(tower);
+                TowerDeactivationE?.Invoke(tower);
             }
         }
 
-        public static void Call(APITower tower, APIActivator activator)
+        public static void Call(string vworld, string sector, int number)
         {
-            if ((IsLocked && !Assembly.GetCallingAssembly().Equals(Events.Master)))
-            {
-                return;
-            }
-            tower.Activator = activator;
-            Call(tower);
+           Call(new APITower(vworld,sector,number)); 
         }
-
-        public static void Call(string vworld, string sector, int number, string activator)
+        internal static Events.OnTowerEvent Subscribe(Events.OnTowerEvent func)
         {
-            if ((IsLocked && !Assembly.GetCallingAssembly().Equals(Events.Master)))
-            {
-                return;
-            }
-            APITower tower = new APITower(vworld,sector,number);
-            tower.Activator = LyokoParser.ParseActivator(activator);
-            Call(tower);
-        }
-
-        public static Events.OnTowerEvent Subscribe(Events.OnTowerEvent func)
-        {
-            TowerActivationE += func;
+            TowerDeactivationE += func;
             return func;
         }
 
-        public static void Unsubscribe(Events.OnTowerEvent func)
+        internal static void Unsubscribe(Events.OnTowerEvent func)
         {
-           TowerActivationE -= func;
+            /*for (var index = 0; index < TowerDeactivationE.GetInvocationList().Length; index++)
+            {
+                var subcription = TowerDeactivationE.GetInvocationList()[index];
+                if (subcription.Equals(func))
+                {
+                    TowerDeactivationE -= func;
+                }
+            }*/
+            TowerDeactivationE -= func;
         }
-        
-        [Obsolete("Use Unsubscribe(...) instead")]
-        public static void UnSubscribe(Events.OnTowerEvent func)
-        {
-            Unsubscribe(func);
-        }
-        
+
         #region locking
         private static bool _isLocked;
         public static bool IsLocked

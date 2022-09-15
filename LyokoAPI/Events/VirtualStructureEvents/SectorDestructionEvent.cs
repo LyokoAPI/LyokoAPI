@@ -1,37 +1,53 @@
-using System.Reflection;
+﻿using System.Reflection;
+using LyokoAPI.API;
+using LyokoAPI.VirtualStructures;
+using LyokoAPI.VirtualStructures.Interfaces;
 
 namespace LyokoAPI.Events
 {
-    public class CommandOutputEvent
+    public class SectorDestructionEvent
     {
-        private static event Events.OnStringEvent stringE;
-        public static void Call(string sender, string message)
+        private static event Events.OnSectorEvent SectorE;
+        public static void Call(ISector sector)
         {
             if (IsLocked && !Assembly.GetCallingAssembly().Equals(Events.Master))
             {
                 return;
             }
-
-            stringE?.Invoke($"[{sender}] {message}");
+            SectorE?.Invoke(sector);
         }
 
-        public static Events.OnStringEvent Subscribe(Events.OnStringEvent func)
+        public static void Call(string world, string sector)
         {
-            stringE += func;
+            if (IsLocked && !Assembly.GetCallingAssembly().Equals(Events.Master))
+            {
+                return;
+            }
+            APISector _sector = new APISector(world, sector);
+            Call(_sector);
+        }
+
+        public static void Call(string sector)
+        {
+            if (IsLocked && !Assembly.GetCallingAssembly().Equals(Events.Master))
+            {
+                return;
+            }
+            APISector _sector = new APISector("Lyoko", sector);
+            Call(_sector);
+        }
+
+        internal static Events.OnSectorEvent Subscribe(Events.OnSectorEvent func)
+        {
+            SectorE += func;
             return func;
         }
 
-        public static void Unsubscribe(Events.OnStringEvent func)
+        internal static void Unsubscribe(Events.OnSectorEvent func)
         {
-            stringE -= func;
+            SectorE -= func;
         }
-        
-        
-        
-        
-        
-        
-        
+
         #region locking
         private static bool _isLocked;
         public static bool IsLocked
@@ -48,6 +64,7 @@ namespace LyokoAPI.Events
             {
                 return false;
             }
+
             IsLocked = true;
             return IsLocked;
         }

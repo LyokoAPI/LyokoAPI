@@ -2,42 +2,29 @@ using System.Reflection;
 
 namespace LyokoAPI.Events
 {
-    public class CommandInputEvent
+    public class XanaDefeatEvent
     {
-        private static event Events.OnStringEvent stringE;
-
-        public static void Call(string command)
+        private static event Events.OnLyokoEvent XanaDefeatE;
+        
+        public static void Call()
         {
             if (IsLocked && !Assembly.GetCallingAssembly().Equals(Events.Master))
             {
                 return;
             }
-
-            string finalcommand = command;
-            if (command.StartsWith("api."))
-            {
-                finalcommand = command.Substring(5);
-            }
-            
-            stringE?.Invoke(finalcommand);
+            XanaDefeatE?.Invoke();
         }
 
-        public static Events.OnStringEvent Subscribe(Events.OnStringEvent func)
+        internal static Events.OnLyokoEvent Subscribe(Events.OnLyokoEvent func)
         {
-            stringE += func;
+            XanaDefeatE += func;
             return func;
         }
 
-        public static void Unsubscribe(Events.OnStringEvent func)
+        internal static void Unsubscribe(Events.OnLyokoEvent func)
         {
-            stringE -= func;
+            XanaDefeatE -= func;
         }
-        
-        
-        
-        
-        
-        
         
         #region locking
         private static bool _isLocked;
@@ -55,6 +42,7 @@ namespace LyokoAPI.Events
             {
                 return false;
             }
+
             IsLocked = true;
             return IsLocked;
         }
